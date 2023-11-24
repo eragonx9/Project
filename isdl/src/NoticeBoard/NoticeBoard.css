@@ -1,0 +1,35 @@
+.notice-board-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notice-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .notice-list li {
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+  
+  .add-notice-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-notice-button:hover {
+    background-color: #2980b9;
+  }
+  
