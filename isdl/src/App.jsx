@@ -8,10 +8,11 @@ import './App.css'
 import NoticeBoard from './NoticeBoard/NoticeBoard';
 import Feedback from './Feedback/Feedback';
 import Venuebook from './Venuebook/Venuebook';
+import Bulletin from './Components/Bulletin/Bulletin';
 
 
 //Frontend Related Imports
-import NavBar from './Components/NavBar/NavBar';
+import Header from './Components/Header/Header'
 
 function App() {
   const navigate = useNavigate();
@@ -22,32 +23,12 @@ function App() {
 
   return (
     <>
-      <NavBar/>
-
-      <nav className="flex gap-6 mb-8">
-        <button
-          
-          onClick={() => handleNavigate('/tech')}
-        >
-          Tech
-        </button>
-        <button
-          
-          onClick={() => handleNavigate('/cult')}
-        >
-          Cult
-        </button>
-        <button
-          
-          onClick={() => handleNavigate('/sport')}
-        >
-          Sport
-        </button>
-      </nav>
-
-      <NoticeBoard/>
+      <Header/>
+      <div className="TitleContent">
+        <Bulletin className="Bulletin"/>
+        <Venuebook className="VenueBook"/>
+      </div>
       <Feedback/>
-      <Venuebook/>
       <Outlet />
 
       <Routes>

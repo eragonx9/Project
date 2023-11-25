@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './NoticeBoard.css';
 const NoticeBoard = () => {
   const [notices, setNotices] = useState([
@@ -15,7 +16,7 @@ const NoticeBoard = () => {
   };
 
   return (
-    <div>
+    <div className=''>
       <h2>Notice Board</h2>
       <ul>
         {notices.map((notice, index) => (

@@ -1,8 +1,25 @@
 #root {
-  max-width: 90vw;
+  width: 100vw;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
   text-align: center;
 }
+
+.TitleContent{
+  width: 100vw;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+}
+
+.Bulletin{
+  flex-basis: 75%;
+}
+
+.VenueBook{
+  flex-basis: 25%;
+}
+
+
 
 
