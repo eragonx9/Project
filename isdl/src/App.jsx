@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
 
+import { useNavigate, Route, Routes, Outlet } from 'react-router-dom';
+import Sport from './Domain/Sport';
+import Tech from './Domain/Tech';
+import Cult from './Domain/Cult';
+import './App.css'
+import NoticeBoard from './NoticeBoard/NoticeBoard';
+import Feedback from './Feedback/Feedback';
+import Venuebook from './Venuebook/Venuebook';
 function App() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      
+      <nav class="flex gap-6 mb-8">
+        <button
+          
+          onClick={() => handleNavigate('/tech')}
+        >
+          Tech
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <button
+          
+          onClick={() => handleNavigate('/cult')}
+        >
+          Cult
+        </button>
+        <button
+          
+          onClick={() => handleNavigate('/sport')}
+        >
+          Sport
+        </button>
+      </nav>
+      <NoticeBoard/>
+      <Feedback/>
+      <Venuebook/>
+      <Outlet />
+
+      <Routes>
+        <Route path="/sport" element={<Sport />} />
+        <Route path="/cult" element={<Cult />} />
+        <Route path="/tech" element={<Tech />} />
+      </Routes>
     </>
-  )
+  );
 }
 
 export default App
