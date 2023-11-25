@@ -8,6 +8,11 @@ import './App.css'
 import NoticeBoard from './NoticeBoard/NoticeBoard';
 import Feedback from './Feedback/Feedback';
 import Venuebook from './Venuebook/Venuebook';
+
+
+//Frontend Related Imports
+import NavBar from './Components/NavBar/NavBar';
+
 function App() {
   const navigate = useNavigate();
 
@@ -17,8 +22,9 @@ function App() {
 
   return (
     <>
-      
-      <nav class="flex gap-6 mb-8">
+      <NavBar/>
+
+      <nav className="flex gap-6 mb-8">
         <button
           
           onClick={() => handleNavigate('/tech')}
@@ -38,6 +44,7 @@ function App() {
           Sport
         </button>
       </nav>
+
       <NoticeBoard/>
       <Feedback/>
       <Venuebook/>
@@ -52,4 +59,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
