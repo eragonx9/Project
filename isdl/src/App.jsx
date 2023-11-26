@@ -52,6 +52,7 @@ function App() {
         <Route path="/sport" element={<Sport />} />
         <Route path="/cult" element={<Cult />} />
         <Route path="/tech" element={<Tech />} />
+        <Route path="/feedback" element={<Feedback />}/>
       </Routes>
     </body>
   );

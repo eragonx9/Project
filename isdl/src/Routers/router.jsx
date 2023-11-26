@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import App from "../App";
 import Tech from "../Domain/Tech";
 import Cult from "../Domain/Cult";
@@ -20,6 +21,12 @@ import Rendition from "../Domain/Cult/Rendition";
 import Mediacell from "../Domain/Cult/Mediacell";
 import Aaveg from "../Domain/Cult/Aaveg";
 import Eminence from "../Domain/Cult/Eminence";
+import Cricket from "../Domain/Sport/Cricket";
+import Football from "../Domain/Sport/Football";
+import Kabaddi from "../Domain/Sport/Kabaddi";
+import Badminton from "../Domain/Sport/Badminton";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -95,9 +102,27 @@ const router = createBrowserRouter([
   
     
   {
-    path: "/sport/",
+    path: "/sport",
     element: <Sport />,
-  }
+  },
+      {
+        path: "/sport/badminton",
+        element: <Badminton />,
+      },
+      {
+        path: "/sport/cricket",
+        element: <Cricket/>,
+      },
+      {
+        path: "/sport/football",
+        element: <Football />,
+      },
+      {
+        path: "/sport/kabaddi",
+        element: <Kabaddi />,
+      },
+
+     
 
 ]);
 export default router;
