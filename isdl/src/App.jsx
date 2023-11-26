@@ -25,9 +25,44 @@ function App() {
   return (
     <body className='bg-dark' data-bs-theme="dark">
       
+<<<<<<< Updated upstream
       <div className='Header sticky-top'>
       <Header/>
       </div>
+=======
+      <nav class="flex gap-6 mb-8">
+        <button
+          
+          onClick={() => handleNavigate('/tech')}
+        >
+          Tech
+        </button>
+        <button
+          
+          onClick={() => handleNavigate('/cult')}
+        >
+          Cult
+        </button>
+        <button
+          
+          onClick={() => handleNavigate('/sport')}
+        >
+          Sport
+        </button>
+       
+      </nav>
+      <NoticeBoard/>
+      <nav>
+      <button
+          
+          onClick={() => handleNavigate('/feedback')}
+        >
+          Feedback
+        </button>
+        </nav>
+      <Venuebook/>
+      <Outlet />
+>>>>>>> Stashed changes
 
       <div className="TitleContent">
         <div className='Bulletin bg-secondary border-right border-bottom'>
@@ -52,6 +87,7 @@ function App() {
         <Route path="/sport" element={<Sport />} />
         <Route path="/cult" element={<Cult />} />
         <Route path="/tech" element={<Tech />} />
+        <Route path="/feedback" element={<Feedback />}/>
       </Routes>
     </body>
   );
