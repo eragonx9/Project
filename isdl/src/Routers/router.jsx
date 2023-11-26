@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import App from "../App";
 import Tech from "../Domain/Tech";
 import Cult from "../Domain/Cult";
@@ -24,7 +25,7 @@ import Cricket from "../Domain/Sport/Cricket";
 import Football from "../Domain/Sport/Football";
 import Kabaddi from "../Domain/Sport/Kabaddi";
 import Badminton from "../Domain/Sport/Badminton";
-import Feedback from "../Feedback/Feedback";
+
 
 const router = createBrowserRouter([
   {
@@ -121,10 +122,7 @@ const router = createBrowserRouter([
         element: <Kabaddi />,
       },
 
-      {
-        path: "/feedback",
-        element: <Feedback/>
-        }
+     
 
 ]);
 export default router;

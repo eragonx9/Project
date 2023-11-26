@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 // MongoDB
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = "mongodb+srv://21ucs195:eragonx9@cluster0.zb8lmek.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -41,7 +41,36 @@ async function connectToMongo() {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+  app.get("/all-notices",async(req,res)=>{
+    const notice= Noticeboard.find();
+    const result= await notice.toArray();
+    res.send(result);
+  });
+  app.patch("/edit-notice/:id",async(req,res)=>{
+    const id=req.params.id;
+    const editnotice= req.body;
+    const filter = { _id: new ObjectId(id) };
+    const options = { upsert: true };
+
+    const updateDoc = {
+      $set: {
+        ...editnotice
+      }
+    }
+    const result= await Noticeboard.updateOne(filter,updateDoc,options);
+    res.send(result);
+  });
+
+  app.delete("/delete-notice/:id",async(req,res)=>{
+    const id=req.params.id;
+    const filter = { _id: new ObjectId(id) };
+    const result= Noticeboard.deleteOne(filter);
+    res.send(result);
+  })
+
 }
+  
 
 connectToMongo().catch(console.dir);
 
