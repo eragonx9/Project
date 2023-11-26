@@ -30,10 +30,10 @@ function App() {
       </div>
 
       <div className="TitleContent">
-        <div className='Bulletin bg-secondary border-right border-bottom'>
+        <div className='Bulletin bg-secondary border-dark'>
         <Bulletin/>
         </div>
-        <div className='VenueBook bg-secondary border-left border-bottom'>
+        <div className='VenueBook bg-secondary border-dark'>
         <VenueBooking/>
         </div>
       </div>

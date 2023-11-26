@@ -71,17 +71,22 @@ const Bulletin = () => {
 
   return (
 
-    <div className="bg-secondary text-secondary px-4 py-3 text-center">
+    <div className="bg-secondary text-secondary px-4 py-3">
       <div className="py-0">
-        <h1 className="display-5 fw-bold text-white">Notice Board</h1>
+        <h1 className="display-5 fw-bold text-white text-center">Notice Board</h1>
         <div className="col-lg-8 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
-          <p className="fs-5 mb-4">
+          <p style={{maxHeight: "8rem", overflowY: "scroll", overflowWrap:"break-word" }} className="fs-5 mb-4">
     
-            <ul>
+            <ol>
+              <li>Test</li>
+              <li>Test</li>
+              <li>Test</li>
+              <li>Test</li>
               {notices.map((notice, index) => (
                 <li key={index}>{notice.notice}</li>
               ))}
-            </ul>
+            </ol>
+
           </p>
           <div className="px-2 mb-2 d-grid gap-2 d-sm-flex justify-content-sm-center">
             <button

@@ -46,7 +46,7 @@ const VenueBooking = () => {
       <h1 className="display-5 fw-bold text-white">Book A Venue</h1>
       <div className="col-lg-6 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
         
-      <form  className="fs-5 mt-3 mb-2" onSubmit={handleBookingSubmit}>
+      <form  className="fs-5 mt-1 mb-1" onSubmit={handleBookingSubmit}>
         <label className='pb-2'>
           Enter Booking venue (1-10):
           <input
@@ -57,10 +57,11 @@ const VenueBooking = () => {
             max="10"
           />
         </label>
-        <button type="button submit" className="btn btn-primary btn-md mx-4 px-4 me-sm-3 fw-bold">Book</button>
+        <button type="button submit" className="btn btn-primary btn-lg mx-4 px-4 me-sm-3 fw-bold">Book</button>
       </form>
 
-            <ul>
+            <ul style={{maxHeight:"4.75rem", overflowY:"scroll", overflowWrap:"break-word"}}>
+            <li>Test</li><li>Test</li><li>Test</li><li>Test</li>
         {bookings.map((booking) => (
           <li key={booking.id}>
             {booking.time}

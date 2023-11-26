@@ -20,9 +20,10 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-8">
+    <div className="container flex py-5">
+      
+      <div className="justify-content-center flex-grow-1 flex-shrink-1">  
+        <div className="FeedbackForm">
           {/* Feedback Form */}
           <div className="card">
             <div className="card-body">
@@ -52,9 +53,10 @@ const FeedbackForm = () => {
           </div>
         </div>
       </div>
-      <div className="row mt-5">
-        <div className="col-md-6">
-          <h1 className="display-5 fw-bold lh-1 mb-3">Give Us Feedback!</h1>
+
+      <div className=" mt-5">
+        <div className="FeedbackText">
+          <h1 className="display-5 fw-bold lh-1 mb-3">Please Give Us Feedback!</h1>
           <p className="lead">
             Your Feedback is extremely valuable to us and can help us improve the ECAMS to further extend the utility of this system.
           </p>
