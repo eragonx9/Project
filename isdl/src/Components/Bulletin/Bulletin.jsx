@@ -17,10 +17,10 @@ const Bulletin = () => {
       };
 
   return (
-    <div className="bg-dark text-secondary px-4 py-3 text-center">
+    <div className="bg-secondary text-secondary px-4 py-3 text-center">
     <div className="py-0">
       <h1 className="display-5 fw-bold text-white">Notice Board</h1>
-      <div className="col-lg-6 py-2 rounded-4 bg-primary-subtle mx-auto border border-success">
+      <div className="col-lg-6 py-2 rounded-4 bg-dark mx-auto border-light">
         
         <p className="fs-5 mb-4">
             <ul>

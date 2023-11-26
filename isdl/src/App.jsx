@@ -8,11 +8,12 @@ import './App.css'
 import NoticeBoard from './NoticeBoard/NoticeBoard';
 import Feedback from './Feedback/Feedback';
 import Venuebook from './Venuebook/Venuebook';
-import Bulletin from './Components/Bulletin/Bulletin';
-
 
 //Frontend Related Imports
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header/Header'
+import Bulletin from './Components/Bulletin/Bulletin';
+import VenueBooking from './Components/VenueBooking/VenueBooking';
 
 function App() {
   const navigate = useNavigate();
@@ -25,9 +26,14 @@ function App() {
     <>
       <Header/>
       <div className="TitleContent">
-        <Bulletin className="Bulletin"/>
-        <Venuebook className="VenueBook"/>
+        <div className='Bulletin border-right border-bottom'>
+        <Bulletin/>
+        </div>
+        <div className='VenueBook'>
+        <VenueBooking/>
+        </div>
       </div>
+      <Venuebook/>
       <Feedback/>
       <Outlet />
 
