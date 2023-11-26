@@ -25,7 +25,7 @@ import Cricket from "../Domain/Sport/Cricket";
 import Football from "../Domain/Sport/Football";
 import Kabaddi from "../Domain/Sport/Kabaddi";
 import Badminton from "../Domain/Sport/Badminton";
-
+import Login from "../Components/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -121,7 +121,10 @@ const router = createBrowserRouter([
         path: "/sport/kabaddi",
         element: <Kabaddi />,
       },
-
+      {
+        path:"/login",
+        element:<Login/>
+      }
      
 
 ]);
