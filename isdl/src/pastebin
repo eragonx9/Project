@@ -1,0 +1,27 @@
+      <nav class="flex gap-6 mb-8">
+        <button
+          
+          onClick={() => handleNavigate('/tech')}
+        >
+          Tech
+        </button>
+        <button
+          
+          onClick={() => handleNavigate('/cult')}
+        >
+          Cult
+        </button>
+        <button
+          
+          onClick={() => handleNavigate('/sport')}
+        >
+          Sport
+        </button>
+      </nav>
+
+
+
+
+
+
+      
