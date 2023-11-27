@@ -2,7 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
+import Signup from "../Components/Signup/Signup";
 import App from "../App";
 import Tech from "../Domain/Tech";
 import Cult from "../Domain/Cult";
@@ -124,6 +124,10 @@ const router = createBrowserRouter([
       {
         path:"/login",
         element:<Login/>
+      },
+      {
+        path: "/signup",
+        element: <Signup/>
       }
      
 

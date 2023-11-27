@@ -1,34 +1,36 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-
 import InputControl from "../InputControl/InputControl";
-import { auth } from "../../firebase";
+import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
+import  './Signup.css';
+import {Link, useNavigate} from "react-router-dom";
+import {auth} from "../../firebase"
 
-import "./Login.css";
 
-
-function Login() {
+function Signup() {
   const navigate= useNavigate();
 const [values, setValues] = useState({
  
   email: "",
+  position: "",
   password: "",
 });
 const [errorMsg, setErrorMsg] = useState("");
 const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
 const handleSubmission=()=>{
-  if( !values.email || !values.password){
+  if( !values.email || !values.position || !values.password){
     setErrorMsg("Please fill all the fields");
     return;
   }
   setErrorMsg("");
   setSubmitButtonDisabled(true);
 
-  signInWithEmailAndPassword(auth, values.email, values.password).then(
+  createUserWithEmailAndPassword(auth, values.email, values.password).then(
     async(res) => {
       setSubmitButtonDisabled(false);
+      const user = res.user;
+      await updateProfile(user, {displayName: values.position,});
+      console.log(user);
       navigate("/");
     }
   ).catch((err) =>{ 
@@ -40,7 +42,7 @@ const handleSubmission=()=>{
   return (
     <div className="container12">
       <div className="innerBox12">
-        <h1 className="heading12">Login</h1>
+        <h1 className="heading12">Sign up</h1>
 
 
          <InputControl
@@ -49,9 +51,14 @@ const handleSubmission=()=>{
           placeholder="Enter your email address"
         onChange = {event=>setValues(prev=>({...prev, email:event.target.value}))}   
         />
-  
+         <InputControl
+          label="Position"
+          placeholder="Enter position(student, faculty, coordinator, etc)"
+        onChange = {event=>setValues(prev=>({...prev, position:event.target.value}))} 
+        />
+
         <InputControl 
-        type="password" 
+        type= "password"
         label="Password" 
         placeholder="Enter Password"
        onChange = {event=>setValues(prev=>({...prev, password:event.target.value}))} 
@@ -63,9 +70,9 @@ const handleSubmission=()=>{
           onClick = {handleSubmission}
           disabled = {submitButtonDisabled}
           >
-            Login</button>
-          <p>Don't have an account?{" "}<span>
-          <Link to="/signup">Sign up</Link>
+            Sign up</button>
+          <p>Already have an account?<span>
+          <Link to="/login">Log in</Link>
             </span>
             </p>
         </div>
@@ -74,4 +81,4 @@ const handleSubmission=()=>{
   );
 }
 
-export default Login;
+export default Signup;
