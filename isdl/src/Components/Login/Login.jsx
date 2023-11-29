@@ -9,34 +9,33 @@ import "./Login.css";
 
 
 function Login() {
-  const navigate= useNavigate();
-const [values, setValues] = useState({
- 
-  email: "",
-  password: "",
-});
-const [errorMsg, setErrorMsg] = useState("");
-const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+  const navigate = useNavigate();
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const [errorMsg, setErrorMsg] = useState("");
+  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
-const handleSubmission=()=>{
-  if( !values.email || !values.password){
-    setErrorMsg("Please fill all the fields");
-    return;
-  }
-  setErrorMsg("");
-  setSubmitButtonDisabled(true);
-
-  signInWithEmailAndPassword(auth, values.email, values.password).then(
-    async(res) => {
-      setSubmitButtonDisabled(false);
-      navigate("/");
+  const handleSubmission = () => {
+    if (!values.email || !values.password) {
+      setErrorMsg("Please fill all the fields");
+      return;
     }
-  ).catch((err) =>{ 
-     setSubmitButtonDisabled(false);
-     setErrorMsg(err.message);
-  }
-    );
-};
+    setErrorMsg("");
+    setSubmitButtonDisabled(true);
+
+    signInWithEmailAndPassword(auth, values.email, values.password)
+      .then(() => {
+        setSubmitButtonDisabled(false);
+        // Redirect to the App page after successful login
+        navigate("/login/");
+      })
+      .catch((err) => {
+        setSubmitButtonDisabled(false);
+        setErrorMsg(err.message);
+      });
+  };
   return (
     <div className="container12">
       <div className="innerBox12">
