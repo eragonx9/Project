@@ -2,35 +2,82 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FeedbackForm = () => {
-  // State to store feedback and submission status
+  const [name, setName] = useState('');
   const [feedback, setFeedback] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [lastThreeFeedbacks, setLastThreeFeedbacks] = useState([]);
+  const [showLastThreeFeedbacks, setShowLastThreeFeedbacks] = useState(false);
 
-  // Function to handle changes in the feedback textarea
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
   const handleFeedbackChange = (e) => {
     setFeedback(e.target.value);
   };
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here, you can perform additional actions, such as sending the feedback to a server
-    console.log('Feedback submitted:', feedback);
-    setSubmitted(true);
+    try {
+      const response = await fetch('http://localhost:5000/addfeedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, feedback }),
+      });
+      const result = await response.json();
+      if (result) {
+        setSubmitted(true);
+        setName('');
+        setFeedback('');
+        fetchLastThreeFeedbacks(); // Refresh last three feedbacks after submission
+      }
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+    }
+  };
+
+  const fetchLastThreeFeedbacks = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/last-three-feedbacks');
+      const data = await response.json();
+      setLastThreeFeedbacks(data);
+    } catch (error) {
+      console.error('Error fetching last three feedbacks:', error);
+    }
+  };
+
+  const handleShowLastThreeFeedbacks = () => {
+    setShowLastThreeFeedbacks(!showLastThreeFeedbacks);
+    if (!showLastThreeFeedbacks) {
+      fetchLastThreeFeedbacks(); // Fetch last three feedbacks when the button is clicked to show them
+    }
   };
 
   return (
     <div className="container py-5">
       <div className="row justify-content-center">
         <div className="col-md-8">
-          {/* Feedback Form */}
           <div className="card">
             <div className="card-body">
               <h2 className="card-title">Feedback Form</h2>
               {submitted ? (
-                <p>Thank you for your feedback!</p>
+                <p>Thank you for your feedback, {name}!</p>
               ) : (
                 <form onSubmit={handleSubmit}>
+                  <div className="mb-3">
+                    <label htmlFor="nameInput" className="form-label">
+                      Your Name:
+                    </label>
+                    <input
+                      type="text"
+                      id="nameInput"
+                      className="form-control"
+                      value={name}
+                      onChange={handleNameChange}
+                    />
+                  </div>
                   <div className="mb-3">
                     <label htmlFor="feedbackTextarea" className="form-label">
                       Your Feedback:
@@ -58,6 +105,21 @@ const FeedbackForm = () => {
           <p className="lead">
             Your Feedback is extremely valuable to us and can help us improve the ECAMS to further extend the utility of this system.
           </p>
+        </div>
+        <div className="col-md-6">
+          <h3>Last Three Feedbacks</h3>
+          {showLastThreeFeedbacks && (
+            <ul>
+              {lastThreeFeedbacks.map((item, index) => (
+                <li key={index}>
+                  <strong>{item.name}:</strong> {item.feedback}
+                </li>
+              ))}
+            </ul>
+          )}
+          <button className="btn btn-secondary" onClick={handleShowLastThreeFeedbacks}>
+            {showLastThreeFeedbacks ? 'Hide Last Three Feedbacks' : 'Show Last Three Feedbacks'}
+          </button>
         </div>
       </div>
     </div>
