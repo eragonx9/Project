@@ -30,7 +30,11 @@ import Login from "../Components/Login/Login";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <Login/>
+  },
+  {
+    path: "/login/",
+    element: <App/>
   },
   {
     path: "/tech",
@@ -121,10 +125,7 @@ const router = createBrowserRouter([
         path: "/sport/kabaddi",
         element: <Kabaddi />,
       },
-      {
-        path:"/login",
-        element:<Login/>
-      },
+      
       {
         path: "/signup",
         element: <Signup/>
