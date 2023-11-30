@@ -9,16 +9,15 @@ import {auth} from "../../firebase"
 function Signup() {
   const navigate= useNavigate();
 const [values, setValues] = useState({
- 
+  name: "",
   email: "",
-  position: "",
   password: "",
 });
 const [errorMsg, setErrorMsg] = useState("");
 const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
 const handleSubmission=()=>{
-  if( !values.email || !values.position || !values.password){
+  if( !values.name || !values.email || !values.password){
     setErrorMsg("Please fill all the fields");
     return;
   }
@@ -29,7 +28,7 @@ const handleSubmission=()=>{
     async(res) => {
       setSubmitButtonDisabled(false);
       const user = res.user;
-      await updateProfile(user, {displayName: values.position,});
+      await updateProfile(user, {displayName: values.name,});
       console.log(user);
       navigate("/");
     }
@@ -44,6 +43,12 @@ const handleSubmission=()=>{
       <div className="innerBox12">
         <h1 className="heading12">Sign up</h1>
 
+        <InputControl
+        type="text"
+          label="Name"
+          placeholder="Enter your name"
+        onChange = {event=>setValues(prev=>({...prev, name:event.target.value}))} 
+        />
 
          <InputControl
          type="email"
@@ -51,11 +56,7 @@ const handleSubmission=()=>{
           placeholder="Enter your email address"
         onChange = {event=>setValues(prev=>({...prev, email:event.target.value}))}   
         />
-         <InputControl
-          label="Position"
-          placeholder="Enter position(student, faculty, coordinator, etc)"
-        onChange = {event=>setValues(prev=>({...prev, position:event.target.value}))} 
-        />
+        
 
         <InputControl 
         type= "password"
