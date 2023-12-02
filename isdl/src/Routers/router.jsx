@@ -26,7 +26,7 @@ import Football from "../Domain/Sport/Football";
 import Kabaddi from "../Domain/Sport/Kabaddi";
 import Badminton from "../Domain/Sport/Badminton";
 import Login from "../Components/Login/Login";
-
+import Clubrec from "../Components/ClubRecruitment/Clubrec";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -129,8 +129,11 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup/>
+      },
+      {
+        path: '/recruitment',
+        element: <Clubrec />,
       }
-     
 
 ]);
 export default router;

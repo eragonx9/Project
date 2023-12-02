@@ -10,7 +10,7 @@ import Rendition from './Cult/Rendition';
 import Mediacell from './Cult/Mediacell';
 import Aaveg from './Cult/Aaveg';
 import Eminence from './Cult/Eminence';
-
+import Clubrec from '../Components/ClubRecruitment/Clubrec';
 function App() {
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ function App() {
         <button onClick={() => handleNavigate('/cult/aaveg')}>Aaveg</button>
         <button onClick={() => handleNavigate('/cult/eminence')}>Eminence</button>
         <button onClick={() => handleNavigate('/cult/lc')}>Lc</button>
-
+        <button onClick={() => handleNavigate('/recruitment')}>Club Recruitment</button>    
       </nav>
 
       <Outlet />
@@ -44,6 +44,7 @@ function App() {
         <Route path="/cult/mediacell" element={<Mediacell />} />
         <Route path="/cult/aaveg" element={<Aaveg />} />
         <Route path="/cult/Eminence" element={<Eminence />} />
+        <Route path="/recruitment" element={< Clubrec />} />
       </Routes>
     </>
   );
