@@ -11,6 +11,7 @@ import Mediacell from './Cult/Mediacell';
 import Aaveg from './Cult/Aaveg';
 import Eminence from './Cult/Eminence';
 import Clubrec from '../Components/ClubRecruitment/Clubrec';
+
 function App() {
   const navigate = useNavigate();
 

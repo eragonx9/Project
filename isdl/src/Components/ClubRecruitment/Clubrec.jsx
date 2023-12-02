@@ -1,48 +1,154 @@
-// RecruitmentPage.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const clubrec = ({ navigation }) => {
-  const [selectedClub, setSelectedClub] = useState('');
-  const [rollNumber, setRollNumber] = useState('');
 
-  const handleJoinClub = () => {
-    if (!selectedClub.trim() || !rollNumber.trim()) {
-      Alert.alert('Error', 'Please enter both club name and roll number');
-      return;
+const ClubRecruitment = () => {
+  const initialFormData = {
+    domain: '',
+    club: '',
+    name: '',
+    rollNumber: '',
+    contact: '',
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Send the form data to the backend
+      const response = await fetch('http://localhost:5000/submit-club-recruitment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Club recruitment form submitted successfully!');
+        setSubmitMessage('Form submitted successfully!');
+        setFormData(initialFormData); // Reset the form
+        // You can perform additional actions here if needed
+      } else {
+        console.error('Failed to submit club recruitment form');
+        setSubmitMessage('Failed to submit form. Please try again.');
+        // Handle the error accordingly
+      }
+    } catch (error) {
+      console.error('Error submitting club recruitment form:', error);
+      setSubmitMessage('Error submitting form. Please try again.');
+      // Handle the error accordingly
     }
+  };
 
-    // Add logic to handle club joining with selectedClub and rollNumber
-    console.log(`Joined ${selectedClub} with Roll Number: ${rollNumber}`);
-
-    // Optionally, navigate to another screen or perform additional actions
-    // navigation.navigate('AnotherScreen');
+  // Define club options for each domain
+  const clubOptions = {
+    tech: ['Quizzinga', 'Debsoc', 'Phoenix', 'Astronomy','Cipher','Cybros'],
+    cult: ['Rendition', 'Capriccio', 'Insignia', 'LC','Eminence','Imagination','Aaveg','Media Cell'],
+    sport: ['Football ', 'Cricket', 'Badminton ', 'kabaddi'],
   };
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 24, marginBottom: 16 }}>Club Recruitment Page</Text>
+    <div className="container mt-5">
+      <h2 className="mb-4">Club Recruitment Form</h2>
+      {submitMessage && <div className="alert alert-success">{submitMessage}</div>}
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="domain" className="form-label">
+            Select Domain:
+          </label>
+          <select
+            id="domain"
+            name="domain"
+            value={formData.domain}
+            onChange={handleInputChange}
+            className="form-select"
+          >
+            <option value="">Select Domain</option>
+            <option value="tech">Tech</option>
+            <option value="cult">Cult</option>
+            <option value="sport">Sport</option>
+          </select>
+        </div>
 
-      <Text style={{ fontSize: 18, marginTop: 8 }}>Select Club:</Text>
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 8, paddingLeft: 8 }}
-        placeholder="Enter Club Name"
-        value={selectedClub}
-        onChangeText={(text) => setSelectedClub(text)}
-      />
+        {formData.domain && (
+          <div className="mb-3">
+            <label htmlFor="club" className="form-label">
+              Select Club:
+            </label>
+            <select
+              id="club"
+              name="club"
+              value={formData.club}
+              onChange={handleInputChange}
+              className="form-select"
+            >
+              <option value="">Select Club</option>
+              {clubOptions[formData.domain].map((clubName) => (
+                <option key={clubName} value={clubName}>
+                  {clubName}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
 
-      <Text style={{ fontSize: 18, marginTop: 8 }}>Enter Roll Number:</Text>
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 8, paddingLeft: 8 }}
-        placeholder="Enter Roll Number"
-        value={rollNumber}
-        onChangeText={(text) => setRollNumber(text)}
-        keyboardType="numeric"
-      />
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Name:
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+        </div>
 
-      <Button title="Join Club" onPress={handleJoinClub} />
-    </View>
+        <div className="mb-3">
+          <label htmlFor="rollNumber" className="form-label">
+            Roll Number:
+          </label>
+          <input
+            type="text"
+            id="rollNumber"
+            name="rollNumber"
+            value={formData.rollNumber}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="contact" className="form-label">
+            Contact:
+          </label>
+          <input
+            type="text"
+            id="contact"
+            name="contact"
+            value={formData.contact}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default clubrec;
+export default ClubRecruitment;

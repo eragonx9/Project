@@ -94,6 +94,62 @@ app.delete("/cancel-booking/:id", async (req, res) => {
 
 
 
+const ClubRecruitment = client.db("ClubRecruitment").collection("clubrecruitment");
+
+// Define the route after the connection is established
+app.post("/submit-club-recruitment", async (req, res) => {
+  try {
+    const formData = req.body;
+
+    // Validate the form data (you can add more validation if needed)
+    if (!formData.domain || !formData.club || !formData.name || !formData.rollNumber || !formData.contact) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    // Add the new club recruitment data to the collection
+    const result = await ClubRecruitment.insertOne(formData);
+    res.json(result);
+  } catch (error) {
+    console.error('Error handling POST request to /submit-club-recruitment:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get("/all-club-recruitments", async (req, res) => {
+  try {
+    const allClubRecruitments = await ClubRecruitment.find().toArray();
+    res.json(allClubRecruitments);
+  } catch (error) {
+    console.error('Error fetching all club recruitments:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Add this route definition after connecting to MongoDB
+// Modify the route definition after connecting to MongoDB
+app.get("/get-recruitment-data", async (req, res) => {
+  try {
+    const { club } = req.query;
+
+    // Check if the 'club' query parameter is provided
+    if (!club) {
+      return res.status(400).json({ error: 'Club parameter is required' });
+    }
+
+    // Retrieve recruitment data for the specific club
+    const clubRecruitmentData = await ClubRecruitment.find({ club }).toArray();
+    res.json(clubRecruitmentData);
+  } catch (error) {
+    console.error('Error fetching club recruitment data:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+
+
+
 
 
 

@@ -8,6 +8,7 @@ import Debsoc from './Tech/Debsoc';
 import Astronomy from './Tech/Astronomy';
 import Phoenix from './Tech/Phoenix';
 import Cybros from './Tech/Cybros';
+import Clubrec from "../Components/ClubRecruitment/Clubrec";
 function App() {
   const navigate = useNavigate();
 
@@ -55,6 +56,8 @@ function App() {
         >
           Cybros
         </button>
+
+        <button onClick={() => handleNavigate('/recruitment')}>Club Recruitment</button> 
       </nav>
 
       <Outlet />
@@ -66,6 +69,7 @@ function App() {
         <Route path="/tech/Phoenix" element={<Phoenix />} />
         <Route path="/tech/astronomy" element={<Astronomy />} />
         <Route path="/tech/Cybros" element={<Cybros />} />
+        <Route path="/recruitment" element={< Clubrec />} />
       </Routes>
     </>
   );
