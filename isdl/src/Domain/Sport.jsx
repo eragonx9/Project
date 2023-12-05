@@ -6,6 +6,7 @@ import Badminton from './Sport/Badminton';
 import Football from './Sport/Football';
 import Kabaddi from './Sport/Kabaddi';
 import Clubrec from "../Components/ClubRecruitment/Clubrec";
+import Requisition from '../Components/Requisition/Requisition';
 function App() {
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ function App() {
       <button onClick={() => handleNavigate('/sport/football')}>Football</button>
       <button onClick={() => handleNavigate('/sport/kabaddi')}>Kabaddi</button>
       <button onClick={() => handleNavigate('/recruitment')}>Club Recruitment</button> 
-
+      <button onClick={() => handleNavigate('/requisition')}>Requisition</button>    
       </nav>
 
       <Outlet />
@@ -33,6 +34,7 @@ function App() {
         <Route path="/sport/football" element={<Football />} />
         <Route path="/sport/kabaddi" element={<Kabaddi />} />
         <Route path="/recruitment" element={< Clubrec />} />
+        <Route path="/requisition" element={< Requisition />} />
       </Routes>
     </>
   );

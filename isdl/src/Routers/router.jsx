@@ -27,6 +27,8 @@ import Kabaddi from "../Domain/Sport/Kabaddi";
 import Badminton from "../Domain/Sport/Badminton";
 import Login from "../Components/Login/Login";
 import Clubrec from "../Components/ClubRecruitment/Clubrec";
+import Requisition from "../Components/Requisition/Requisition";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -133,6 +135,10 @@ const router = createBrowserRouter([
       {
         path: '/recruitment',
         element: <Clubrec />,
+      },
+      {
+        path: '/requisition',
+        element: <Requisition/>
       }
 
 ]);

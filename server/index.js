@@ -30,63 +30,57 @@ async function connectToMongo() {
   //  Feedback collection is created after the connection is established
   const Feedback = client.db("Feedback").collection("feedback");
 
-  const VenueBookings = client.db("VenueBookings").collection("bookings");
+  // ... (Your existing imports and setup code)
+
+const VenueBookings = client.db("VenueBookings").collection("venuebookings");
 
 // Define the route after the connection is established
-app.post("/add-booking", async (req, res) => {
+app.post("/submit-venue-booking", async (req, res) => {
   try {
-    const { time } = req.body;
+    const { venueNumber } = req.body;
 
-    // Check for valid booking time
-    if (isNaN(time) || time < 1 || time > 10) {
-      return res.status(400).json({ error: 'Invalid booking time' });
+    // Validate the venue number
+    if (isNaN(venueNumber) || venueNumber < 1 || venueNumber > 12) {
+      return res.status(400).json({ error: 'Please enter a valid venue number between 1 and 12.' });
     }
 
-    // Check if the time is already booked
-    const existingBooking = await VenueBookings.findOne({ time });
-    if (existingBooking) {
-      return res.status(400).json({ error: 'Hall is already booked' });
-    }
-
-    // Add the new booking to the collection
-    const newBooking = { time };
-    const result = await VenueBookings.insertOne(newBooking);
+    // Add the new venue booking to the collection
+    const result = await VenueBookings.insertOne({ venueNumber });
     res.json(result);
   } catch (error) {
-    console.error('Error handling POST request to /add-booking:', error);
+    console.error('Error handling POST request to /submit-venue-booking:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-app.get("/all-bookings", async (req, res) => {
+app.get("/all-venue-bookings", async (req, res) => {
   try {
-    const allBookings = await VenueBookings.find().toArray();
-    res.json(allBookings);
+    const allVenueBookings = await VenueBookings.find().toArray();
+    res.json(allVenueBookings);
   } catch (error) {
-    console.error('Error fetching all bookings:', error);
+    console.error('Error fetching all venue bookings:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
-app.delete("/cancel-booking/:id", async (req, res) => {
+app.delete("/cancel-venue-booking/:id", async (req, res) => {
   try {
     const id = req.params.id;
+    const filter = { _id: new ObjectId(id) };
 
-    // Use the findOneAndDelete method to find and delete the booking
-    const result = await VenueBookings.findOneAndDelete({ _id: new ObjectId(id) });
-
-    if (result.value) {
-      // Successfully canceled the booking
-      res.status(204).end();
-    } else {
-      // Booking with the given ID not found
-      res.status(404).json({ error: 'Booking not found' });
-    }
+    // Delete the venue booking
+    const result = await VenueBookings.deleteOne(filter);
+    res.json(result);
   } catch (error) {
-    console.error('Error handling DELETE request to /cancel-booking:', error);
+    console.error('Error handling DELETE request to /cancel-venue-booking/:id', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
+
+
+  
 
 
 
@@ -233,6 +227,68 @@ app.get("/get-recruitment-data", async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+
+
+
+
+
+
+  const Requisitions = client.db("Requisitions").collection("requisitions");
+
+  app.post("/submit-requisition", async (req, res) => {
+    try {
+      const { club, eventName, eventDate, amount } = req.body;
+
+      if (!club || !eventName || !eventDate || isNaN(amount)) {
+        return res.status(400).json({ error: 'Invalid requisition data' });
+      }
+
+      const result = await Requisitions.insertOne({ club, eventName, eventDate, amount });
+      res.json(result);
+    } catch (error) {
+      console.error('Error handling POST request to /submit-requisition:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  app.get("/all-requisitions", async (req, res) => {
+    try {
+      const allRequisitions = await Requisitions.find().toArray();
+      res.json(allRequisitions);
+    } catch (error) {
+      console.error('Error fetching all requisitions:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  app.post("/handle-requisition-approval", async (req, res) => {
+    try {
+      const { requisitionId, isApproved } = req.body;
+
+      if (!requisitionId || typeof isApproved !== 'boolean') {
+        return res.status(400).json({ error: 'Invalid input data' });
+      }
+
+      const result = await Requisitions.updateOne(
+        { _id: ObjectId(requisitionId) },
+        { $set: { isApproved } }
+      );
+      res.json(result);
+    } catch (error) {
+      console.error('Error handling POST request to /handle-requisition-approval:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+
+
+
+
+
+
+
+
 }
 
 connectToMongo().catch(console.dir);
