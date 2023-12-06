@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate, Route, Routes, Outlet } from 'react-router-dom';
-
+import Login from "../Login/Login";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -24,9 +24,14 @@ function Header() {
             <Nav.Link onClick={() => handleNavigate('/cult')}>Cultural Clubs</Nav.Link>
             <Nav.Link onClick={() => handleNavigate('/sport')}>Sports Clubs</Nav.Link>
           </Nav>
-          <Button variant="light" onClick={() => handleNavigate('')}>Login</Button>{' '}
+          <Button variant="light" onClick={() => handleNavigate('/login')}>Login</Button>{' '}
         </Container>
       </Navbar>
+
+      <Routes>
+      <Route path="/login" element={<Login />} />
+      </Routes>
+
     </>
   );
 }

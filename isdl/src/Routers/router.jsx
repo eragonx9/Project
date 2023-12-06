@@ -2,7 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
+import Signup from "../Components/Signup/Signup";
 import App from "../App";
 import Tech from "../Domain/Tech";
 import Cult from "../Domain/Cult";
@@ -25,12 +25,18 @@ import Cricket from "../Domain/Sport/Cricket";
 import Football from "../Domain/Sport/Football";
 import Kabaddi from "../Domain/Sport/Kabaddi";
 import Badminton from "../Domain/Sport/Badminton";
-
+import Login from "../Components/Login/Login";
+import Clubrec from "../Components/ClubRecruitment/Clubrec";
+import Requisition from "../Components/Requisition/Requisition";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <Login/>
+  },
+  {
+    path: "/login/",
+    element: <App/>
   },
   {
     path: "/tech",
@@ -121,8 +127,19 @@ const router = createBrowserRouter([
         path: "/sport/kabaddi",
         element: <Kabaddi />,
       },
-
-     
+      
+      {
+        path: "/signup",
+        element: <Signup/>
+      },
+      {
+        path: '/recruitment',
+        element: <Clubrec />,
+      },
+      {
+        path: '/requisition',
+        element: <Requisition/>
+      }
 
 ]);
 export default router;

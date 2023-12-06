@@ -40,18 +40,12 @@ const Bulletin = () => {
     }
   };
 
-  const editNotices = async () => {
-    // Fetch updated notices from the backend after editing
-    fetchNotices();
-  };
-
-
   const removeNotice = async () => {
     const indexToRemove = prompt('Enter the index of the notice to remove:');
     if (indexToRemove !== null) {
       const selectedIndex = parseInt(indexToRemove, 10) - 1;
       const noticeToDelete = notices[selectedIndex];
-  
+
       if (noticeToDelete) {
         try {
           const response = await fetch(`http://localhost:5000/delete-notice/${noticeToDelete._id}`, {
@@ -67,7 +61,6 @@ const Bulletin = () => {
       }
     }
   };
-  
 
   return (
 
@@ -96,22 +89,13 @@ const Bulletin = () => {
             >
               Add New Notice
             </button>
-            <div className="d-flex">
-              <button
-                type="button"
-                className="btn btn-secondary btn-md px-4 me-sm-3"
-                onClick={editNotices}
-              >
-                Edit Notices
-              </button>
-              <button
-                type="button"
-                className="btn btn-danger btn-md px-4"
-                onClick={removeNotice}
-              >
-                Remove Notice
-              </button>
-            </div>
+            <button
+              type="button"
+              className="btn btn-danger btn-md px-4"
+              onClick={removeNotice}
+            >
+              Remove Notice
+            </button>
           </div>
         </div>
       </div>
