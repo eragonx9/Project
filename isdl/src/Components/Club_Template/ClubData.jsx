@@ -1,5 +1,5 @@
 // clubData.js
-import AavegImage from '../Club_Template/Images/aaveg.png';
+import AavegImage from '../../Domain/Assets/Aaveg.png';
 const clubData = {
     Aaveg: {
       name: 'Aaveg',

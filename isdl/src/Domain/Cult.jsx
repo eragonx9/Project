@@ -18,7 +18,11 @@ import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
 
 //Logo Imports
-
+import Aaveg_logo from './Assets/Aaveg.png'
+import Capriccio_logo from './Assets/Capriccio.jpeg'
+import Eminence_logo from './Assets/Eminence.jpeg'
+import Imagi_logo from './Assets/Imagi.png'
+import Insignia_logo from './Assets/Insignia.jpeg'
 
 function App() {
   const navigate = useNavigate();
@@ -32,15 +36,51 @@ function App() {
 
       <Header/>
 
-      <div className='Clubs d-flex flex-wrap justify-content-center my-4'>
+      <div className='DomainPage d-flex flex-wrap justify-content-center my-4'>
 
-      <div className="card mx-4 my-2" style={{width: "16rem"}} >
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/cult/lc')} style={{height: "auto", width: "100%", display: "block"}} src="" data-holder-rendered="true"></img>
-          <div className="card-body d-flex flex-column">
-            <h5 className="card-title">Quizzinga</h5>
-            <p className="card-text flex-grow-1">The Quizzing Club of LNMIIT</p>
-            <button className='btn btn-primary' onClick={() => handleNavigate('/cult/lc')}>Check It Out</button>
-          </div>
+        <div className="card mx-4 my-2" style={{width: "16rem"}} >
+            <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/cult/lc')} style={{height: "auto", width: "100%", display: "block"}} src={Aaveg_logo} data-holder-rendered="true"></img>
+            <div className="card-body d-flex flex-column">
+              <h5 className="card-title">Aaveg</h5>
+              <p className="card-text flex-grow-1">The Nukkad Mandli of LNMIIT</p>
+              <button className='btn btn-primary' onClick={() => handleNavigate('/cult/lc')}>Check It Out</button>
+            </div>
+        </div>
+
+        <div className="card mx-4 my-2" style={{width: "16rem"}} >
+            <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/cult/capriccio')} style={{height: "auto", width: "100%", display: "block"}} src={Capriccio_logo} data-holder-rendered="true"></img>
+            <div className="card-body d-flex flex-column">
+              <h5 className="card-title">Capriccio</h5>
+              <p className="card-text flex-grow-1">The Music Club of LNMIIT</p>
+              <button className='btn btn-primary' onClick={() => handleNavigate('/cult/capriccio')}>Check It Out</button>
+            </div>
+        </div>
+
+        <div className="card mx-4 my-2" style={{width: "16rem"}} >
+            <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/cult/Eminence')} style={{height: "auto", width: "100%", display: "block"}} src={Eminence_logo} data-holder-rendered="true"></img>
+            <div className="card-body d-flex flex-column">
+              <h5 className="card-title">Eminence</h5>
+              <p className="card-text flex-grow-1">The Fashion Club of LNMIIT</p>
+              <button className='btn btn-primary' onClick={() => handleNavigate('/cult/Eminence')}>Check It Out</button>
+            </div>
+        </div>
+
+        <div className="card mx-4 my-2" style={{width: "16rem"}} >
+            <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/cult/imagination')} style={{height: "auto", width: "100%", display: "block"}} src={Imagi_logo} data-holder-rendered="true"></img>
+            <div className="card-body d-flex flex-column">
+              <h5 className="card-title">Imagination</h5>
+              <p className="card-text flex-grow-1">The Photography Club of LNMIIT</p>
+              <button className='btn btn-primary' onClick={() => handleNavigate('/cult/imagination')}>Check It Out</button>
+            </div>
+        </div>
+
+        <div className="card mx-4 my-2" style={{width: "16rem"}} >
+            <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/cult/insignia')} style={{height: "auto", width: "100%", display: "block"}} src={Insignia_logo} data-holder-rendered="true"></img>
+            <div className="card-body d-flex flex-column">
+              <h5 className="card-title">Insignia</h5>
+              <p className="card-text flex-grow-1">The Dance Club of LNMIIT</p>
+              <button className='btn btn-primary' onClick={() => handleNavigate('/cult/insignia')}>Check It Out</button>
+            </div>
         </div>
 
       </div>

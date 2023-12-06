@@ -17,7 +17,7 @@ import Footer from '../Components/Footer/Footer';
 
 //Logo Imports
 import Quizzinga_logo from './Assets/Quizzinga.jpg'
-import Cipher_logo from './Assets/Cipher.jpg'
+import Cipher_logo from './Assets/Cipher.png'
 import Debsoc_logo from './Assets/Debsoc.jpg'
 import Phoenix_logo from './Assets/Phoenix.jpg'
 import Astronomy_logo from './Assets/Astronomy.jpg'
