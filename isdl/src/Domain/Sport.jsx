@@ -1,5 +1,8 @@
 
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Cards.css'
+
 import { useNavigate, Route, Routes, Outlet } from 'react-router-dom';
 import Cricket from './Sport/Cricket';
 import Badminton from './Sport/Badminton';
@@ -7,6 +10,12 @@ import Football from './Sport/Football';
 import Kabaddi from './Sport/Kabaddi';
 import Clubrec from "../Components/ClubRecruitment/Clubrec";
 import Requisition from '../Components/Requisition/Requisition';
+import Header from '../Components/Header/Header';
+import Footer from '../Components/Footer/Footer';
+
+//Logo Imports
+
+
 function App() {
   const navigate = useNavigate();
 
@@ -15,9 +24,16 @@ function App() {
   };
 
   return (
-    <>
-      
-      <nav class="flex gap-6 mb-8">
+    <body className='bg-dark' data-bs-theme="dark">
+      <Header/>
+
+
+      <nav className="d-flex flex-column justify-content-center align-items-center mb-8">
+        <button className="btn btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/requisition')}>Apply For Club Recruitment Here!</button>  
+        <button className="btn btn-secondary my-1" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button>
+      </nav>
+
+      <nav className="flex gap-6 mb-8">
       <button onClick={() => handleNavigate('/sport/badminton')}>Badminton</button>
       <button onClick={() => handleNavigate('/sport/cricket')}>Cricket</button>
       <button onClick={() => handleNavigate('/sport/football')}>Football</button>
@@ -26,6 +42,7 @@ function App() {
       <button onClick={() => handleNavigate('/requisition')}>Requisition</button>    
       </nav>
 
+      <Footer/>
       <Outlet />
 
       <Routes>
@@ -36,7 +53,7 @@ function App() {
         <Route path="/recruitment" element={< Clubrec />} />
         <Route path="/requisition" element={< Requisition />} />
       </Routes>
-    </>
+    </body>
   );
 }
 

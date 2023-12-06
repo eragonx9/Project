@@ -7,6 +7,10 @@
     justify-content: center;
     align-items: center;
   }
+
+  InputControl{
+    color: #FFFFFF;
+  }
   
   .innerBox12 {
     min-width: 480px;
