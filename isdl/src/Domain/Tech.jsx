@@ -95,8 +95,11 @@ function App() {
       
       
       <nav className="d-flex justify-content-center align-items-center mb-8">
-        <button className="btn btn-secondary" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button> 
+      <button className="btn btn-secondary" onClick={() => handleNavigate('/recruitment')}>Apply for Club Recruitments </button>
       </nav>
+      <nav className="d-flex justify-content-center align-items-center mb-8"><button className="btn btn-secondary" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button></nav>
+         
+      
       <Footer/>
 
       <Outlet />
