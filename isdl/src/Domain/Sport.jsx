@@ -14,14 +14,10 @@ import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
 
 //Logo Imports
-<<<<<<< HEAD
 import Badminton_logo from './Assets/Cricket.jpeg'
 import Cricket_logo from './Assets/Badminton.jpeg'
 import Football_logo from './Assets/Football.jpeg'
 import Kabaddi_logo from './Assets/Kabbadi.jpeg'
-=======
-
->>>>>>> main
 
 function App() {
   const navigate = useNavigate();
@@ -34,7 +30,6 @@ function App() {
     <body className='bg-dark' data-bs-theme="dark">
       <Header/>
 
-<<<<<<< HEAD
       <div className='DomainPage d-flex flex-wrap justify-content-center my-4'>
 
         <div className="card mx-4 my-2" style={{width: "16rem"}}>
@@ -74,24 +69,10 @@ function App() {
         </div>
 
       </div>
-=======
->>>>>>> main
 
       <nav className="d-flex flex-column justify-content-center align-items-center mb-8">
         <button className="btn btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/requisition')}>Apply For Club Recruitment Here!</button>  
         <button className="btn btn-secondary my-1" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button>
-<<<<<<< HEAD
-=======
-      </nav>
-
-      <nav className="flex gap-6 mb-8">
-      <button onClick={() => handleNavigate('/sport/badminton')}>Badminton</button>
-      <button onClick={() => handleNavigate('/sport/cricket')}>Cricket</button>
-      <button onClick={() => handleNavigate('/sport/football')}>Football</button>
-      <button onClick={() => handleNavigate('/sport/kabaddi')}>Kabaddi</button>
-      <button onClick={() => handleNavigate('/recruitment')}>Club Recruitment</button> 
-      <button onClick={() => handleNavigate('/requisition')}>Requisition</button>    
->>>>>>> main
       </nav>
 
       <Footer/>
