@@ -20,7 +20,7 @@ const Footer = () => {
     </a>
 
     <ul className="nav col-md-4 justify-content-end">
-      <li className="nav-item"><a onClick={() => handleNavigate('/')} className="nav-link px-2 text-muted">Home</a></li>
+      <li className="nav-item"><a onClick={() => handleNavigate('/login')} className="nav-link px-2 text-muted">Home</a></li>
       <li className="nav-item"><a onClick className="nav-link px-2 text-muted">About</a></li>
     </ul>
   </footer>

@@ -18,7 +18,7 @@ function Header() {
     <>
       <Navbar className="border-bottom" bg="dark" data-bs-theme="dark" sticky="top">
         <Container>
-          <Navbar.Brand href="/">ECAMS</Navbar.Brand>
+          <Navbar.Brand href="/login">ECAMS</Navbar.Brand>
           <Nav className=" flex justify-content-center">
             <Nav.Link onClick={() => handleNavigate('/tech')}>Technical Clubs</Nav.Link>
             <Nav.Link onClick={() => handleNavigate('/cult')}>Cultural Clubs</Nav.Link>
