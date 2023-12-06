@@ -39,7 +39,7 @@ function Login() {
   return (
     <div className="container12">
       <div className="innerBox12">
-        <h1 className="heading12">Login</h1>
+        <h1 className="heading12">Login to ECAMS</h1>
 
 
          <InputControl

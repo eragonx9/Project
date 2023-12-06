@@ -85,11 +85,11 @@ const VenueBooking = () => {
   };
 
   return (
-    <div className="bg-secondary text-secondary px-4 py-3 text-center">
+    <div className="bg-secondary text-secondary px-4 py-3">
       <div className="py-0">
-        <h1 className="display-5 fw-bold text-white">Book A Venue</h1>
+        <div className='Heading text-center'> <h1 className="display-5 fw-bold text-white">Book A Venue</h1> </div>
         <div className="col-lg-6 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
-          <form className="fs-5 mt-3 mb-2" onSubmit={handleBookingSubmit}>
+          <form className="fs-5 mt-3 mb-2 text-center" onSubmit={handleBookingSubmit}>
             <label className="pb-2">
               Enter Booking venue (1-12):
               <input
@@ -100,17 +100,17 @@ const VenueBooking = () => {
                 max="12"
               />
             </label>
-            <button type="submit" className="btn btn-primary btn-md mx-4 px-4 me-sm-3 fw-bold">
+            <button type="submit" className="btn btn-primary btn-md mx-4 px-4 fw-bold">
               Book
             </button>
           </form>
-          <ul>
+          <ul style={{maxHeight: "5rem", overflowY: "scroll"}}>
             {bookings.map((booking) => (
               <li key={booking._id}>
                 {booking.venueNumber}
                 <button
                   type="button"
-                  className="btn btn-secondary btn-sm mx-4 px-4"
+                  className="btn btn-secondary btn-sm mx-4 my-2 px-4"
                   onClick={() => handleCancelBooking(booking._id)}
                 >
                   Cancel
