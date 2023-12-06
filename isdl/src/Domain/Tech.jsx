@@ -1,5 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Cards.css'
 
 import { useNavigate, Route, Routes, Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -34,7 +35,7 @@ function App() {
     <body className='bg-dark' data-bs-theme="dark">
       <Header/>
       
-      <div className='Clubs d-flex flex-wrap justify-content-center my-4'>
+      <div className='DomainPage d-flex flex-wrap justify-content-center my-4'>
         
         <div className="card mx-4 my-2" style={{width: "16rem"}} >
           <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/quizzinga')} style={{height: "auto", width: "100%", display: "block"}} src={Quizzinga_logo} data-holder-rendered="true"></img>
