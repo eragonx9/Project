@@ -7,6 +7,8 @@ import Cult from './Domain/Cult';
 import './App.css'
 import Feedback from './Depriciated/Feedback/Feedback';
 
+import lt_logo from '../src/Domain/Assets/lt.jpg'
+import '../src/Domain/Cards.css'
 //Frontend Related Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Components/Header/Header'
@@ -33,11 +35,25 @@ function App() {
         <div className='Bulletin bg-secondary border-dark'>
         <Bulletin/>
         </div>
+
+
         <div className='VenueBook bg-secondary border-dark'>
-        <VenueBooking/>
+        <div className="card mx-10 my-3" style={{width: "16rem"}} >
+          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/venuebook')} style={{height: "auto", width: "100%", display: "block"}} src={lt_logo} data-holder-rendered="true"></img>
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title">Venue Booking System</h5>
+            
+            <button className='btn btn-primary' onClick={() => handleNavigate('/venuebook')}>Book Venue</button>
+          </div>
+        </div>
+
+
+        
         </div>
       </div>
       
+
+
       <div className='FeedbackForm px-2'>
         <FeedbackForm/>
       </div>
@@ -53,6 +69,7 @@ function App() {
         <Route path="/cult" element={<Cult />} />
         <Route path="/tech" element={<Tech />} />
         <Route path="/feedback" element={<Feedback />}/>
+        <Route path="/venuebook" element={<VenueBooking />}/>
       </Routes>
     </body>
   );

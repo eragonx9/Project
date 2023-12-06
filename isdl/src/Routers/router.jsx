@@ -28,6 +28,7 @@ import Badminton from "../Domain/Sport/Badminton";
 import Login from "../Components/Login/Login";
 import Clubrec from "../Components/ClubRecruitment/Clubrec";
 import Requisition from "../Components/Requisition/Requisition";
+import VenueBooking from "../Components/VenueBooking/VenueBooking";
 
 const router = createBrowserRouter([
   {
@@ -139,6 +140,10 @@ const router = createBrowserRouter([
       {
         path: '/requisition',
         element: <Requisition/>
+      },
+      {
+        path: '/venuebook',
+        element: <VenueBooking/>
       }
 
 ]);

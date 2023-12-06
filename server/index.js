@@ -77,6 +77,57 @@ app.delete("/cancel-venue-booking/:id", async (req, res) => {
   }
 });
 
+const { ObjectId } = require('bson');
+
+// Add a new route to handle accepting a booking
+app.put("/accept-venue-booking/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // Check if id is a valid ObjectId
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'Invalid ObjectId' });
+    }
+
+    const filter = { _id: new ObjectId(id) };
+    const update = { $set: { status: "accepted" } };
+
+    // Update the status of the booking to "accepted"
+    const result = await VenueBookings.updateOne(filter, update);
+    res.json(result);
+  } catch (error) {
+    console.error('Error handling PUT request to /accept-venue-booking/:id', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// Add a new route to handle rejecting a booking
+app.put("/reject-venue-booking/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const filter = { _id: new ObjectId(id) };
+    const update = { $set: { status: "rejected" } };
+
+    // Update the status of the booking to "rejected"
+    const result = await VenueBookings.updateOne(filter, update);
+    res.json(result);
+  } catch (error) {
+    console.error('Error handling PUT request to /reject-venue-booking/:id', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
