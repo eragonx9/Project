@@ -1,5 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Cards.css'
 
 import { useNavigate, Route, Routes, Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';

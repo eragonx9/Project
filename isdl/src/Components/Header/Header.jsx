@@ -24,7 +24,7 @@ function Header() {
             <Nav.Link onClick={() => handleNavigate('/cult')}>Cultural Clubs</Nav.Link>
             <Nav.Link onClick={() => handleNavigate('/sport')}>Sports Clubs</Nav.Link>
           </Nav>
-          <Button variant="light" onClick={() => handleNavigate('/')}>Login</Button>{' '}
+          <Button variant="light">Logged in as: (user)</Button>
         </Container>
       </Navbar>
 
