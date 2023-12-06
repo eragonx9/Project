@@ -104,7 +104,7 @@ const VenueBooking = () => {
               Book
             </button>
           </form>
-          <ul>
+          <ul style={{maxHeight: "5rem", overflowY: "scroll"}}>
             {bookings.map((booking) => (
               <li key={booking._id}>
                 {booking.venueNumber}

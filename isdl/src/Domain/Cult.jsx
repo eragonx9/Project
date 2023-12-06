@@ -30,6 +30,20 @@ function App() {
     <body className='bg-dark' data-bs-theme="dark">
 
       <Header/>
+
+      <div className='Clubs d-flex flex-wrap justify-content-center my-4'>
+
+      <div className="card mx-4 my-2" style={{width: "16rem"}} >
+          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/cult/lc')} style={{height: "auto", width: "100%", display: "block"}} src="" data-holder-rendered="true"></img>
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title">Quizzinga</h5>
+            <p className="card-text flex-grow-1">The Quizzing Club of LNMIIT</p>
+            <button className='btn btn-primary' onClick={() => handleNavigate('/cult/lc')}>Check It Out</button>
+          </div>
+        </div>
+
+      </div>
+      
       <nav className="flex gap-6 mb-8">
         <button onClick={() => handleNavigate('/cult/capriccio')}>Capriccio</button>
         <button onClick={() => handleNavigate('/cult/insignia')}>Insignia</button>
