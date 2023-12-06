@@ -1,6 +1,6 @@
 // clubData.js
-import AavegImage from '../Club_Template/Images/Aaveg.jpeg';
-import CapriccioImage from '../Club_Template/Images/Capriccio.jpeg';
+import AavegImage from '..//Club_Template/Images/Aaveg.jpeg';
+import CapriccioImage from '..//Club_Template/Images/Capriccio.jpeg';
 import EminenceImage from '../Club_Template/Images/Eminence.jpeg';
 import ImaginationImage from '../Club_Template/Images/Imagi.png';
 import InsigniaImage from '../Club_Template/Images/Insignia.jpeg';
@@ -10,15 +10,15 @@ import RenditionImage from '../Club_Template/Images/Rendition.jpeg';
 import BadmintonImage from '../Club_Template/Images/Badminton.jpeg';
 import CricketImage from '../Club_Template/Images/Cricket.jpeg';
 import FootballImage from '../Club_Template/Images/Football.jpeg';
-import KabaddiImage from '../Club_Template/Images/Kabbadi.jpeg'
+import KabaddiImage from '../Club_Template/Images/Kabbadi.jpeg';
 
 import AstronomyImage from '../Club_Template/Images/Astronomy.png';
 import CipherImage from '../Club_Template/Images/Cipher.png';
-import CybrosImage from '../Club_Template/Images/Cybros.jpg';
+
 import DebsocImage from '../Club_Template/Images/Debsoc.jpeg';
 import PhoenixImage from '../Club_Template/Images/Phoenix.png';
 import QuizzingaImage from '../Club_Template/Images/Quizzinga.jpeg';
-
+import CybrosImage from '../Club_Template/Images/Cybrosc.jpg';
 
 
 const clubData = {

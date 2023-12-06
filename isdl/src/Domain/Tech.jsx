@@ -17,7 +17,7 @@ import Footer from '../Components/Footer/Footer';
 
 //Logo Imports
 import Quizzinga_logo from './Assets/Quizzinga.jpg'
-import Cipher_logo from './Assets/Cipher.jpg'
+import Cipher_logo from './Assets/Cipher.png'
 import Debsoc_logo from './Assets/Debsoc.jpg'
 import Phoenix_logo from './Assets/Phoenix.jpg'
 import Astronomy_logo from './Assets/Astronomy.jpg'
@@ -37,21 +37,12 @@ function App() {
       
       <div className='DomainPage d-flex flex-wrap justify-content-center my-4'>
         
-        <div className="card mx-4 my-2" style={{width: "16rem"}} >
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/quizzinga')} style={{height: "auto", width: "100%", display: "block"}} src={Quizzinga_logo} data-holder-rendered="true"></img>
-          <div className="card-body d-flex flex-column">
-            <h5 className="card-title">Quizzinga</h5>
-            <p className="card-text flex-grow-1">The Quizzing Club of LNMIIT</p>
-            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/quizzinga')}>Check It Out</button>
-          </div>
-        </div>
-
         <div className="card mx-4 my-2" style={{width: "16rem"}}>
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/debsoc')} style={{height: "auto", width: "100%", display: "block"}} src={Debsoc_logo} data-holder-rendered="true"></img>
+          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/Astronomy')} style={{height: "auto", width: "100%", display: "block"}} src={Astronomy_logo}data-holder-rendered="true"></img>
           <div className="card-body d-flex flex-column">
-            <h5 className="card-title">Debsoc</h5>
-            <p className="card-text flex-grow-1">The Debating Society of LNMIIT</p>
-            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/debsoc')}>Check It Out</button>
+            <h5 className="card-title">Astronomy</h5>
+            <p className="card-text flex-grow-1">The Astronomy Club of LNMIIT</p>
+            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/Astronomy')}>Check It Out</button>
           </div>
         </div>
 
@@ -65,11 +56,20 @@ function App() {
         </div>
 
         <div className="card mx-4 my-2" style={{width: "16rem"}}>
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/Astronomy')} style={{height: "auto", width: "100%", display: "block"}} src={Astronomy_logo}data-holder-rendered="true"></img>
+          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/cybros')} style={{height: "auto", width: "100%", display: "block"}} src={Cybros_logo} data-holder-rendered="true"></img>
           <div className="card-body d-flex flex-column">
-            <h5 className="card-title">Astronomy</h5>
-            <p className="card-text flex-grow-1">The Astronomy Club of LNMIIT</p>
-            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/Astronomy')}>Check It Out</button>
+            <h5 className="card-title">Cybros</h5>
+            <p className="card-text flex-grow-1">The Competitive Coding Club of LNMIIT</p>
+            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/cybros')}>Check It Out</button>
+          </div>
+        </div>
+
+        <div className="card mx-4 my-2" style={{width: "16rem"}}>
+          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/debsoc')} style={{height: "auto", width: "100%", display: "block"}} src={Debsoc_logo} data-holder-rendered="true"></img>
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title">Debsoc</h5>
+            <p className="card-text flex-grow-1">The Debating Society of LNMIIT</p>
+            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/debsoc')}>Check It Out</button>
           </div>
         </div>
 
@@ -82,24 +82,22 @@ function App() {
           </div>
         </div>
 
-        <div className="card mx-4 my-2" style={{width: "16rem"}}>
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/cybros')} style={{height: "auto", width: "100%", display: "block"}} src={Cybros_logo} data-holder-rendered="true"></img>
+        <div className="card mx-4 my-2" style={{width: "16rem"}} >
+          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/tech/quizzinga')} style={{height: "auto", width: "100%", display: "block"}} src={Quizzinga_logo} data-holder-rendered="true"></img>
           <div className="card-body d-flex flex-column">
-            <h5 className="card-title">Cybros</h5>
-            <p className="card-text flex-grow-1">The Competitive Coding Club of LNMIIT</p>
-            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/cybros')}>Check It Out</button>
+            <h5 className="card-title">Quizzinga</h5>
+            <p className="card-text flex-grow-1">The Quizzing Club of LNMIIT</p>
+            <button className='btn btn-primary' onClick={() => handleNavigate('/tech/quizzinga')}>Check It Out</button>
           </div>
         </div>
 
       </div>
       
       
-      <nav className="d-flex justify-content-center align-items-center mb-8">
-      <button className="btn btn-secondary" onClick={() => handleNavigate('/recruitment')}>Apply for Club Recruitments </button>
+      <nav className="d-flex flex-column justify-content-center align-items-center mb-8">
+        <button className="btn btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/requisition')}>Apply For Club Recruitment Here!</button>  
+        <button className="btn btn-secondary my-1" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button>
       </nav>
-      <nav className="d-flex justify-content-center align-items-center mb-8"><button className="btn btn-secondary" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button></nav>
-         
-      
       <Footer/>
 
       <Outlet />
