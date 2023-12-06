@@ -73,7 +73,7 @@ const handleSubmission=()=>{
           >
             Sign up</button>
           <p>Already have an account?<span>
-          <Link to="/login">Log in</Link>
+          <Link to="/">Log in</Link>
             </span>
             </p>
         </div>
