@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import ClubDetailsTemplate from '../../Components/Club_Template/ClubDetailsTemplate';
+import clubData from '../../Components/Club_Template/ClubData';
 
 const Aaveg = () => {
   const [recruitmentData, setRecruitmentData] = useState([]);
   const [showData, setShowData] = useState(false);
-  const clubName = 'Aaveg'; // Replace 'Aaveg' with the specific club name
+  const clubName = 'Aaveg'; 
 
   const fetchData = async () => {
     try {
@@ -32,7 +34,7 @@ const Aaveg = () => {
 
   return (
     <div>
-      <h2>{clubName}</h2>
+      <ClubDetailsTemplate clubDetails={clubData[clubName]} />
       <button onClick={toggleDataVisibility}>
         {showData ? 'Hide Recruitment Data' : 'Show Recruitment Data'}
       </button>
@@ -50,7 +52,19 @@ const Aaveg = () => {
           </ul>
         </div>
       )}
-    </div>
+
+
+      
+
+      </div>
+
+
+    
+
+
+
+
+
   );
 };
 
