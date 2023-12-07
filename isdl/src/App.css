@@ -20,6 +20,14 @@
   flex: 2 1 auto;
 }
 
+.VenueBook-ele{
+  background: transparent;
+  border: 2px solid rgba(244, 235, 235, 0.2);
+  backdrop-filter: blur(5px);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
 .carousel-item img{
-  object-fit: cover;
+  object-fit: fill;
+
 }

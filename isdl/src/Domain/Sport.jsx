@@ -29,7 +29,8 @@ function App() {
   return (
     <body className='bg-dark' data-bs-theme="dark">
       <Header/>
-
+      
+      <div className='d-flex flex-column'>
       <div className='DomainPage d-flex flex-wrap justify-content-center my-4'>
 
         <div className="card mx-4 my-2" style={{width: "16rem"}}>
@@ -70,10 +71,11 @@ function App() {
 
       </div>
 
-      <nav className="d-flex flex-column justify-content-center align-items-center mb-8">
+      <nav className="mt-5 d-flex flex-column justify-content-center align-items-center mb-1">
         <button className="btn btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/recruitment')}>Apply For Club Recruitment Here!</button>  
         <button className="btn btn-secondary my-1" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button>
       </nav>
+      </div>
 
       <Footer/>
       <Outlet />
