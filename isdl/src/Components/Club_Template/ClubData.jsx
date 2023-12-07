@@ -6,6 +6,7 @@ import ImaginationImage from '../Club_Template/Images/Imagi.png';
 import InsigniaImage from '../Club_Template/Images/Insignia.jpeg';
 import LCImage from '../Club_Template/Images/LC.png';
 import RenditionImage from '../Club_Template/Images/Rendition.jpeg';
+import MediacellImage from '../Club_Template/Images/Mcell.jpeg'
 
 import BadmintonImage from '../Club_Template/Images/Badminton.jpeg';
 import CricketImage from '../Club_Template/Images/Cricket.jpeg';
@@ -163,6 +164,14 @@ const clubData = {
       ClubDetails: ' The Club offers indispensable guidance, workshops and tutorials along with tools, equipments, components and workspace to develop in the field of robotics.',
       email:'phoenix@gmail.com',
       contact: '9231547806'
+      
+    },
+    Mediacell: {
+      name: 'Mediacell',
+      image:MediacellImage,
+      ClubDetails: ' official media body of lnmiit ',
+      email:'mcell@gmail.com',
+      contact: '9231547326'
       
     },
 
