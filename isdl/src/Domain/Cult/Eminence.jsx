@@ -6,12 +6,12 @@ const Eminence = () => {
   const [recruitmentData, setRecruitmentData] = useState([]);
   const [showData, setShowData] = useState(false);
   const [authKey, setAuthKey] = useState('');
-  const correctAuthKey = 'Eminence'; // Replace with your actual authentication key
+  const correctAuthKey = 'Eminence'; 
   const clubName = 'Eminence';
 
   const fetchData = async () => {
     try {
-      // Replace 'http://localhost:5000' with the actual URL of your backend
+      
       const response = await fetch(`http://localhost:5000/get-recruitment-data?club=${clubName}`);
       if (response.ok) {
         const data = await response.json();
