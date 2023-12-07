@@ -313,23 +313,13 @@ app.get("/get-recruitment-data", async (req, res) => {
     }
   });
 
-  app.post("/handle-requisition-approval", async (req, res) => {
-    try {
-      const { requisitionId, isApproved } = req.body;
-
-      if (!requisitionId || typeof isApproved !== 'boolean') {
-        return res.status(400).json({ error: 'Invalid input data' });
-      }
-
-      const result = await Requisitions.updateOne(
-        { _id: ObjectId(requisitionId) },
-        { $set: { isApproved } }
-      );
-      res.json(result);
-    } catch (error) {
-      console.error('Error handling POST request to /handle-requisition-approval:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
+  app.delete('/delete-requisition/:id', async (req, res) => {
+  
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const result = Requisitions.deleteOne(filter);
+      res.send(result);
+    
   });
 
 

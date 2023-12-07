@@ -5,10 +5,20 @@ const VenueBooking = () => {
   const [bookings, setBookings] = useState([]);
   const [newBooking, setNewBooking] = useState('');
   const [showList, setShowList] = useState(false);
+
+  // Additional state variables for counts
+  const [acceptedCount, setAcceptedCount] = useState(0);
+  const [rejectedCount, setRejectedCount] = useState(0);
+  const [pendingCount, setPendingCount] = useState(0);
+
   useEffect(() => {
-    // Fetch all venue bookings when the component mounts
     fetchAllVenueBookings();
   }, []);
+
+  useEffect(() => {
+    // Update counts whenever bookings change
+    updateBookingCounts();
+  }, [bookings]);
 
   const fetchAllVenueBookings = async () => {
     try {
@@ -20,7 +30,7 @@ const VenueBooking = () => {
       console.error('Error fetching venue bookings:', error);
     }
   };
-  
+
   const handleNewBookingChange = async (e) => {
     setNewBooking(e.target.value);
   };
@@ -34,14 +44,12 @@ const VenueBooking = () => {
       return;
     }
 
-    // Check if the venue is already booked
     if (bookings.some((booking) => booking.venueNumber === bookingNumber)) {
       alert('This venue is already booked. Please choose another one.');
       return;
     }
 
     try {
-      // Make a POST request to add the venue booking
       const response = await fetch('http://localhost:5000/submit-venue-booking', {
         method: 'POST',
         headers: {
@@ -55,7 +63,6 @@ const VenueBooking = () => {
         throw new Error(errorData.error);
       }
 
-      // Update the venue bookings state with the new booking
       const result = await response.json();
       setBookings([...bookings, result]);
       setNewBooking('');
@@ -67,7 +74,6 @@ const VenueBooking = () => {
 
   const handleAcceptBooking = async (id) => {
     try {
-      // Make a PUT request to update the booking status to "accepted"
       const response = await fetch(`http://localhost:5000/accept-venue-booking/${id}`, {
         method: 'PUT',
         headers: {
@@ -80,7 +86,6 @@ const VenueBooking = () => {
         throw new Error(errorData.error);
       }
 
-      // Update the venue bookings state with the updated status
       const updatedBookings = bookings.map((booking) =>
         booking._id === id ? { ...booking, status: 'accepted' } : booking
       );
@@ -93,14 +98,11 @@ const VenueBooking = () => {
 
   const handleRejectBooking = async (id) => {
     try {
-      // Make a DELETE request to cancel the venue booking
       const response = await fetch(`http://localhost:5000/cancel-venue-booking/${id}`, {
         method: 'DELETE',
       });
-  
-      // Check if the response status is 200 OK, indicating successful rejection and deletion
+
       if (response.ok) {
-        // Remove the rejected booking from the state
         const updatedBookings = bookings.filter((booking) => booking._id !== id);
         setBookings(updatedBookings);
       } else {
@@ -111,8 +113,16 @@ const VenueBooking = () => {
       console.error('Error rejecting venue booking:', error);
     }
   };
-  
-  
+
+  const updateBookingCounts = () => {
+    const accepted = bookings.filter((booking) => booking.status === 'accepted').length;
+    const rejected = bookings.filter((booking) => booking.status === 'rejected').length;
+    const pending = bookings.filter((booking) => !booking.status).length;
+
+    setAcceptedCount(accepted);
+    setRejectedCount(rejected);
+    setPendingCount(pending);
+  };
 
   return (
     <div className="bg-secondary text-secondary px-4 py-3">
@@ -134,41 +144,15 @@ const VenueBooking = () => {
               Book
             </button>
           </form>
-          {/* Button to toggle list visibility */}
-          <button
-            className="btn btn-secondary btn-md mx-4 px-4 fw-bold"
-            onClick={() => setShowList(!showList)}
-          >
-            {showList ? 'Hide List' : 'Show List'}
-          </button>
-          {/* List will be displayed if showList is true */}
-          {showList && (
-            <ul style={{ maxHeight: "5rem", overflowY: "scroll" }}>
-              {bookings.map((booking) => (
-                <li key={booking._id}>
-                  {`lt-${booking.venueNumber !== undefined ? booking.venueNumber : 'Loading...'}`}
-                  {booking.status === 'accepted' ? (
-                    <span className="text-success"> - Accepted</span>
-                  ) : booking.status === 'rejected' ? (
-                    <span className="text-danger"> - Rejected</span>
-                  ) : (
-                    <span className="text-info"> - Awaiting response from admin</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
         <div className="col-lg-6 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
           <h2>Booking Actions</h2>
-          {/* Button to toggle booking actions visibility */}
           <button
             className="btn btn-secondary btn-md mx-4 px-4 fw-bold"
             onClick={() => setShowList(!showList)}
           >
             {showList ? 'Hide Booking Actions' : 'Show Booking Actions'}
           </button>
-          {/* Booking actions will be displayed if showList is true */}
           {showList && (
             <ul>
               {bookings.map((booking) => (
@@ -200,6 +184,24 @@ const VenueBooking = () => {
               ))}
             </ul>
           )}
+        </div>
+        <div className="col-lg-6 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
+          <h2>Booked LTs</h2>
+          {/* Display details of each booked LT */}
+          <ul style={{ maxHeight: "5rem", overflowY: "scroll" }}>
+            {bookings.map((booking) => (
+              <li key={booking._id}>
+                {`lt-${booking.venueNumber !== undefined ? booking.venueNumber : 'Loading...'} - `}
+                {booking.status === 'accepted' ? (
+                  <span className="text-success">Accepted</span>
+                ) : booking.status === 'rejected' ? (
+                  <span className="text-danger">Rejected</span>
+                ) : (
+                  <span className="text-info">Pending</span>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
