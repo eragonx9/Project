@@ -16,18 +16,27 @@ const ClubRecruitment = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [submitMessage, setSubmitMessage] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [rollNumberError, setRollNumberError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
+  
     // Validate phone number format
     if (name === 'contact' && !/^\d{0,10}$/.test(value)) {
       setPhoneNumberError('Phone number should be 10 digits');
     } else {
       setPhoneNumberError('');
     }
+  
+    // Validate roll number format
+    if (name === 'rollNumber' && !/^\d{2}[a-zA-Z]{3}\d{3}$/.test(value)) {
+      setRollNumberError('Invalid roll number format. Example: 21ucs195, 20ucc200, 19ume204, 18ume054');
+    } else {
+      setRollNumberError('');
+    }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,6 +105,7 @@ const ClubRecruitment = () => {
               <option value="sport">Sport</option>
             </select>
           </div>
+
 
           {formData.domain && (
             <div className="mb-3">
@@ -172,6 +182,60 @@ const ClubRecruitment = () => {
       <Footer/>
       </div>
     </>
+
+        )}
+
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Name:
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="form-control"
+          />
+        </div>
+
+          <div className="mb-3">
+          <label htmlFor="rollNumber" className="form-label">
+            Roll Number:
+          </label>
+          <input
+            type="text"
+            id="rollNumber"
+            name="rollNumber"
+            value={formData.rollNumber}
+            onChange={handleInputChange}
+            className={`form-control ${rollNumberError ? 'is-invalid' : ''}`}
+          />
+          {rollNumberError && <div className="invalid-feedback">{rollNumberError}</div>}
+          </div>
+
+
+        <div className="mb-3">
+          <label htmlFor="contact" className="form-label">
+            Contact:
+          </label>
+          <input
+            type="text"
+            id="contact"
+            name="contact"
+            value={formData.contact}
+            onChange={handleInputChange}
+            className={`form-control ${phoneNumberError ? 'is-invalid' : ''}`}
+          />
+          {phoneNumberError && <div className="invalid-feedback">{phoneNumberError}</div>}
+        </div>
+
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+
   );
 };
 

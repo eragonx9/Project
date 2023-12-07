@@ -64,7 +64,7 @@ const FeedbackForm = () => {
             <div className="card-body">
               <h2 className="card-title">Feedback Form</h2>
               {submitted ? (
-                <p>Thank you for your feedback, {name}!</p>
+                <p>Thank you for your feedback {name}!!</p>
               ) : (
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
