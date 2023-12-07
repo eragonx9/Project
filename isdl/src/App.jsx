@@ -47,49 +47,21 @@ function App() {
   };
 
   return (
-    <body className='bg-dark' data-bs-theme="dark">
+    <body data-bs-theme="dark">
       
       <div className='Header sticky-top'>
       <Header/>
       </div>
 
-      <div className='ImgSlideshow'>
-        <div id="carouselExample" className="carousel slide mx-3">
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img src={i1} className="d-block w-100" alt="..."></img>
-            </div>
-            <div className="carousel-item">
-              <img src={i2} className="d-block w-100" alt="..."></img>
-            </div>
-            <div className="carousel-item">
-              <img src={i3} className="d-block w-100" alt="..."></img>
-            </div>
-            <div className="carousel-item">
-              <img src={i4} className="d-block w-100" alt="..."></img>
-            </div>
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-
-      </div>
-
       <div className="TitleContent">
         
-        <div className='Bulletin bg-secondary border-dark'>
+        <div className='Bulletin border-dark'>
           <Bulletin/>
         </div>
 
-
-        <div className='VenueBook bg-secondary px-4 py-3 border-dark d-flex justify-content-center align-items-center'>
-          <div className="card mx-10 my-3 rounded-4" style={{width: "20rem"}} >
+      <div className='VenueBook px-4'>
+        <div className='VenueBook-ele my-2 px-4 pt-3 pb-1 rounded-4 d-flex justify-content-center align-items-center'>
+          <div className="card mx-auto my-3 rounded-4" style={{width: "14rem"}} >
             <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/login/venuebook')} style={{height: "auto", width: "100%", display: "block", objectFit:'cover'}} src={lt_im1} data-holder-rendered="true"></img>
 
             <div className="card-body d-flex flex-column">
@@ -98,6 +70,7 @@ function App() {
             </div>
           </div>
         </div>
+      </div>
 
       </div>
       

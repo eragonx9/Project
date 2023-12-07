@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
+import './Bulletin.css'
 
 const Bulletin = () => {
   const [notices, setNotices] = useState([]);
@@ -64,8 +65,8 @@ const Bulletin = () => {
 
   return (
 
-    <div className="bg-secondary text-secondary px-4 py-3">
-      <div className="py-0">
+    <div className="text-secondary px-4">
+      <div className="Bulletin-ele py-3 my-2 rounded-4">
         <h1 className="display-5 fw-bold text-white text-center">Notice Board</h1>
         <div className="col-lg-8 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
           <p style={{minHeight: "10rem",maxHeight: "10rem", overflowY: "scroll", overflowWrap:"break-word" }} className="fs-5 mb-4">
