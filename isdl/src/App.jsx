@@ -7,7 +7,7 @@ import Cult from './Domain/Cult';
 import './App.css'
 import Feedback from './Depriciated/Feedback/Feedback';
 
-import lt_logo from '../src/Domain/Assets/lt.jpg'
+import lt_im1 from '../src/Domain/Assets/lt.jpg'
 import '../src/Domain/Cards.css'
 //Frontend Related Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,24 +32,23 @@ function App() {
       </div>
 
       <div className="TitleContent">
+        
         <div className='Bulletin bg-secondary border-dark'>
-        <Bulletin/>
+          <Bulletin/>
         </div>
 
 
-        <div className='VenueBook bg-secondary border-dark'>
-        <div className="card mx-10 my-3" style={{width: "16rem"}} >
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/login/venuebook')} style={{height: "auto", width: "100%", display: "block"}} src={lt_logo} data-holder-rendered="true"></img>
-          <div className="card-body d-flex flex-column">
-            <h5 className="card-title">Venue Booking System</h5>
-            
-            <button className='btn btn-primary' onClick={() => handleNavigate('/login/venuebook')}>Book Venue</button>
+        <div className='VenueBook bg-secondary px-4 py-3 border-dark d-flex justify-content-center align-items-center'>
+          <div className="card mx-10 my-3 rounded-4" style={{width: "20rem"}} >
+            <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/login/venuebook')} style={{height: "auto", width: "100%", display: "block", objectFit:'cover'}} src={lt_im1} data-holder-rendered="true"></img>
+
+            <div className="card-body d-flex flex-column">
+              <h5 className="card-title flex-grow-1">Venue Booking System</h5>
+              <button className='btn btn-primary' onClick={() => handleNavigate('/login/venuebook')}>Book Venue</button>
+            </div>
           </div>
         </div>
 
-
-        
-        </div>
       </div>
       
 
