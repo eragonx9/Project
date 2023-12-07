@@ -18,7 +18,7 @@ import CipherImage from '../Club_Template/Images/Cipher.png';
 import DebsocImage from '../Club_Template/Images/Debsoc.jpeg';
 import PhoenixImage from '../Club_Template/Images/Phoenix.png';
 import QuizzingaImage from '../Club_Template/Images/Quizzinga.jpeg';
-import CybrosImage from '../Club_Template/Images/Cybrosc.jpg';
+import CybrosImage from '../Club_Template/Images/Cybros.jpg';
 
 
 const clubData = {
