@@ -32,24 +32,22 @@ function App() {
       </div>
 
       <div className="TitleContent">
+        
         <div className='Bulletin bg-secondary border-dark'>
-        <Bulletin/>
+          <Bulletin/>
         </div>
 
 
         <div className='VenueBook bg-secondary border-dark'>
-        <div className="card mx-10 my-3" style={{width: "16rem"}} >
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/venuebook')} style={{height: "auto", width: "100%", display: "block"}} src={lt_logo} data-holder-rendered="true"></img>
-          <div className="card-body d-flex flex-column">
-            <h5 className="card-title">Venue Booking System</h5>
-            
-            <button className='btn btn-primary' onClick={() => handleNavigate('/venuebook')}>Book Venue</button>
-          </div>
+          <div className="card mx-10 my-3" style={{width: "16rem"}} >
+            <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/venuebook')} style={{height: "auto", width: "100%", display: "block"}} src={lt_logo} data-holder-rendered="true"></img>
+            <div className="card-body d-flex flex-column">
+              <h5 className="card-title">Venue Booking System</h5>         
+              <button className='btn btn-primary' onClick={() => handleNavigate('/venuebook')}>Book Venue</button>
+            </div>
+          </div>       
         </div>
-
-
         
-        </div>
       </div>
       
 
