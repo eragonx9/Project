@@ -13,18 +13,27 @@ const ClubRecruitment = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [submitMessage, setSubmitMessage] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [rollNumberError, setRollNumberError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
+  
     // Validate phone number format
     if (name === 'contact' && !/^\d{0,10}$/.test(value)) {
       setPhoneNumberError('Phone number should be 10 digits');
     } else {
       setPhoneNumberError('');
     }
+  
+    // Validate roll number format
+    if (name === 'rollNumber' && !/^\d{2}[a-zA-Z]{3}\d{3}$/.test(value)) {
+      setRollNumberError('Invalid roll number format. Example: 21ucs195, 20ucc200, 19ume204, 18ume054');
+    } else {
+      setRollNumberError('');
+    }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -128,7 +137,7 @@ const ClubRecruitment = () => {
           />
         </div>
 
-        <div className="mb-3">
+          <div className="mb-3">
           <label htmlFor="rollNumber" className="form-label">
             Roll Number:
           </label>
@@ -138,9 +147,11 @@ const ClubRecruitment = () => {
             name="rollNumber"
             value={formData.rollNumber}
             onChange={handleInputChange}
-            className="form-control"
+            className={`form-control ${rollNumberError ? 'is-invalid' : ''}`}
           />
-        </div>
+          {rollNumberError && <div className="invalid-feedback">{rollNumberError}</div>}
+          </div>
+
 
         <div className="mb-3">
           <label htmlFor="contact" className="form-label">
