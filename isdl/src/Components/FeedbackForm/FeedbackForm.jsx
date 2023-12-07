@@ -108,7 +108,7 @@ const FeedbackForm = () => {
           </p>
         </div>
         <div className="col-md-5 ">
-          <h3>See Our Last Three Feedbacks</h3>
+          <h3>See Our Feedbacks:</h3>
           {showLastThreeFeedbacks && (
             <ul>
               {lastThreeFeedbacks.map((item, index) => (
