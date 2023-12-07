@@ -18,26 +18,19 @@ const ClubDetailsTemplate = ({ clubDetails }) => {
       <div className="col-lg-6">
           <h1 className="display-5 fw-bold lh-1 mb-3">{name}</h1>
           <p className="lead">{ClubDetails}</p>
-          <div className="display-linebreak d-grid gap-2 d-md-flex-column justify-content-md-start align-items-md-center">
-            <h3>Contact The Coordinators:</h3>
-            <h5>{contact}</h5>
+          <div className="lead display-linebreak d-grid gap-2 d-md-flex-column justify-content-md-start align-items-md-center">
+            <h4>Contact Us:</h4>
+            <p>{contact}</p>
+            <p> <a href={"mailto:"+email}>{email}</a></p>
           </div>
       </div>
 
       <div className="col-10 col-sm-8 col-lg-6">
-        <img src={image} className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"></img>
+        <img src={image} className="d-block mx-lg-auto img-fluid" style={{width: '300rem', aspectRatio: 1 / 1, objectFit:'cover', objectPosition: 'center'}} loading="lazy"></img>
       </div>
     </div>
   </div>
       
-      <div>
-        <h2>{name}</h2>
-        <img src={image} alt={`${name} Logo`} style={{ maxWidth: '100%' }} />
-        <p>Club Details: {ClubDetails}</p>
-        <p>Email: {email}</p>
-        <p>Contact: {contact}</p>
-        {/* Add other details as needed */}
-      </div>
       <Footer/>
     </>
   );
