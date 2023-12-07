@@ -14,8 +14,8 @@ import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
 
 //Logo Imports
-import Badminton_logo from './Assets/Cricket.jpeg'
-import Cricket_logo from './Assets/Badminton.jpeg'
+import Badminton_logo from './Assets/Badminton.jpeg'
+import Cricket_logo from './Assets/Cricket.jpeg'
 import Football_logo from './Assets/Football.jpeg'
 import Kabaddi_logo from './Assets/Kabbadi.jpeg'
 
