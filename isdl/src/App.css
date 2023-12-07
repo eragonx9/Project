@@ -20,6 +20,6 @@
   flex: 2 1 auto;
 }
 
-
-
-
+.carousel-item img{
+  object-fit: cover;
+}

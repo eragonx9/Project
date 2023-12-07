@@ -68,7 +68,7 @@ const Bulletin = () => {
       <div className="py-0">
         <h1 className="display-5 fw-bold text-white text-center">Notice Board</h1>
         <div className="col-lg-8 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
-          <p style={{maxHeight: "8rem", overflowY: "scroll", overflowWrap:"break-word" }} className="fs-5 mb-4">
+          <p style={{minHeight: "10rem",maxHeight: "10rem", overflowY: "scroll", overflowWrap:"break-word" }} className="fs-5 mb-4">
     
             <ol>
 
