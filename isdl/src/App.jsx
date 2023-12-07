@@ -43,7 +43,7 @@ function App() {
           <div className="card-body d-flex flex-column">
             <h5 className="card-title">Venue Booking System</h5>
             
-            <button className='btn btn-primary' onClick={() => handleNavigate('/venuebook')}>Book Venue</button>
+            <button className='btn btn-primary' onClick={() => handleNavigate('/login/venuebook')}>Book Venue</button>
           </div>
         </div>
 
@@ -69,7 +69,7 @@ function App() {
         <Route path="/cult" element={<Cult />} />
         <Route path="/tech" element={<Tech />} />
         <Route path="/feedback" element={<Feedback />}/>
-        <Route path="/venuebook" element={<VenueBooking />}/>
+        <Route path="/login/venuebook" element={<VenueBooking />}/>
       </Routes>
     </body>
   );
