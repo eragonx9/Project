@@ -39,7 +39,7 @@ function App() {
 
         <div className='VenueBook bg-secondary border-dark'>
         <div className="card mx-10 my-3" style={{width: "16rem"}} >
-          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/venuebook')} style={{height: "auto", width: "100%", display: "block"}} src={lt_logo} data-holder-rendered="true"></img>
+          <img className="card-img-top" data-src="holder.js/100px180/" onClick={() => handleNavigate('/login/venuebook')} style={{height: "auto", width: "100%", display: "block"}} src={lt_logo} data-holder-rendered="true"></img>
           <div className="card-body d-flex flex-column">
             <h5 className="card-title">Venue Booking System</h5>
             
