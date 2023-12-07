@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 const ClubRecruitment = () => {
   const initialFormData = {
     domain: '',
@@ -13,14 +12,28 @@ const ClubRecruitment = () => {
 
   const [formData, setFormData] = useState(initialFormData);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Validate phone number format
+    if (name === 'contact' && !/^\d{0,10}$/.test(value)) {
+      setPhoneNumberError('Phone number should be 10 digits');
+    } else {
+      setPhoneNumberError('');
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate phone number format one more time before submitting
+    if (!/^\d{10}$/.test(formData.contact)) {
+      setPhoneNumberError('Phone number should be 10 digits');
+      return;
+    }
 
     try {
       // Send the form data to the backend
@@ -51,8 +64,8 @@ const ClubRecruitment = () => {
 
   // Define club options for each domain
   const clubOptions = {
-    tech: ['Quizzinga', 'Debsoc', 'Phoenix', 'Astronomy','Cipher','Cybros'],
-    cult: ['Rendition', 'Capriccio', 'Insignia', 'LC','Eminence','Imagination','Aaveg','Media Cell'],
+    tech: ['Quizzinga', 'Debsoc', 'Phoenix', 'Astronomy', 'Cipher', 'Cybros'],
+    cult: ['Rendition', 'Capriccio', 'Insignia', 'LC', 'Eminence', 'Imagination', 'Aaveg', 'Media Cell'],
     sport: ['Football ', 'Cricket', 'Badminton ', 'kabaddi'],
   };
 
@@ -139,8 +152,9 @@ const ClubRecruitment = () => {
             name="contact"
             value={formData.contact}
             onChange={handleInputChange}
-            className="form-control"
+            className={`form-control ${phoneNumberError ? 'is-invalid' : ''}`}
           />
+          {phoneNumberError && <div className="invalid-feedback">{phoneNumberError}</div>}
         </div>
 
         <button type="submit" className="btn btn-primary">

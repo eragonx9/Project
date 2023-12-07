@@ -14,8 +14,8 @@ import Header from '../Components/Header/Header';
 import Footer from '../Components/Footer/Footer';
 
 //Logo Imports
-import Badminton_logo from './Assets/Cricket.jpeg'
-import Cricket_logo from './Assets/Badminton.jpeg'
+import Badminton_logo from './Assets/Badminton.jpeg'
+import Cricket_logo from './Assets/Cricket.jpeg'
 import Football_logo from './Assets/Football.jpeg'
 import Kabaddi_logo from './Assets/Kabbadi.jpeg'
 
@@ -71,7 +71,7 @@ function App() {
       </div>
 
       <nav className="d-flex flex-column justify-content-center align-items-center mb-8">
-        <button className="btn btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/requisition')}>Apply For Club Recruitment Here!</button>  
+        <button className="btn btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/recruitment')}>Apply For Club Recruitment Here!</button>  
         <button className="btn btn-secondary my-1" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button>
       </nav>
 

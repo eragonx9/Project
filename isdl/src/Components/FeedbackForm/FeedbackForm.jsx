@@ -63,7 +63,7 @@ const FeedbackForm = () => {
             <div className="card-body">
               <h2 className="card-title">Feedback Form</h2>
               {submitted ? (
-                <p>Thank you for your feedback, {name}!</p>
+                <p>Thank you for your feedback {name}!!</p>
               ) : (
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
@@ -99,20 +99,20 @@ const FeedbackForm = () => {
           </div>
         </div>
       </div>
-      <div className="row mt-5">
-        <div className="col-md-6">
+      <div className="row  mt-5 justify-content-center align-items-start">
+        <div className="col-md-7 ">
           <h1 className="display-5 fw-bold lh-1 mb-3">Give Us Feedback!</h1>
           <p className="lead">
             Your Feedback is extremely valuable to us and can help us improve the ECAMS to further extend the utility of this system.
           </p>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-5 ">
           <h3>Last Three Feedbacks</h3>
           {showLastThreeFeedbacks && (
             <ul>
               {lastThreeFeedbacks.map((item, index) => (
                 <li key={index}>
-                  <strong>{item.name}:</strong> {item.feedback}
+                  <strong>{item.feedback}</strong> 
                 </li>
               ))}
             </ul>

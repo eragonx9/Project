@@ -2,25 +2,38 @@
     height: 100%;
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(to right, rgb(75, 74, 75), #0b0b0b);
+    background-image:url("../../Domain/Assets/lnmiit/lnmiit2.jpeg") ;
+    filter: grayscale(100%);
+    background-size: cover; /* Adjust the size of the background image */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+  .heading12{
+    color: white;
+    font-weight: 500;
+  }
   .innerBox12 {
     min-width: 480px;
     height: fit-content;
     width: fit-content;
-    background-color: #fff;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    border: 2px solid rgba(244, 235, 235, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
     padding: 30px;
     border-radius: 10px;
     display: flex;
+    filter: none;
     flex-direction: column;
     gap: 30px;
   }
-  
+  .innerBox12 input::placeholder {
+    color: rgb(197, 193, 193);
+}
+
   .footer12 {
     display: flex;
     flex-direction: column;
@@ -29,8 +42,8 @@
   
   .footer12 .error {
     font-weight: bold;
-    font-size: 0.875rem;
-    color: #ff3300;
+    font-size: 0.88rem;
+    color: black;
     text-align: center;
   }
   
@@ -58,7 +71,7 @@
   
   .footer12 p {
     font-weight: 500;
-    color: #272626;
+    color: #cbc1c1;
   }
   
   .footer12 p span a {
