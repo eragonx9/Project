@@ -71,9 +71,9 @@ function App() {
 
       </div>
 
-      <nav className="mt-5 d-flex flex-column justify-content-center align-items-center mb-1">
-        <button className="btn btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/recruitment')}>Apply For Club Recruitment Here!</button>  
-        <button className="btn btn-secondary my-1" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here (Using Your Club's Email ID)</button>
+      <nav className="mt-4 d-flex flex-column justify-content-center align-items-center mb-1">
+        <button className="btn btn-lg btn-secondary my-1 flex-grow-1" onClick={() => handleNavigate('/recruitment')}>Apply For Club Recruitments Here!</button>  
+        <button className="btn btn-lg btn-secondary my-1" onClick={() => handleNavigate('/requisition')}>Apply For Requisitions Here</button>
       </nav>
       </div>
 
