@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import ClubDetailsTemplate from '../../Components/Club_Template/ClubDetailsTemplate';
+import clubData from '../../Components/Club_Template/ClubData';
 const Debsoc= () => {
   const [recruitmentData, setRecruitmentData] = useState([]);
   const [showData, setShowData] = useState(false);
@@ -32,7 +33,7 @@ const Debsoc= () => {
 
   return (
     <div>
-      <h2>{clubName}</h2>
+      <ClubDetailsTemplate clubDetails={clubData[clubName]} />
       <button onClick={toggleDataVisibility}>
         {showData ? 'Hide Recruitment Data' : 'Show Recruitment Data'}
       </button>

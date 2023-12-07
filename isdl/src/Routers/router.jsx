@@ -31,6 +31,7 @@ import Login from "../Components/Login/Login";
 import Clubrec from "../Components/ClubRecruitment/Clubrec";
 import Requisition from "../Components/Requisition/Requisition";
 import { auth } from "../firebase"; // Import your authentication object
+import VenueBooking from "../Components/VenueBooking/VenueBooking";
 
 // Helper function to check if the user is authenticated
 const isAuthenticated = () => {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "/login/*",
     element:<AuthenticatedRoute element={<App />} />,
+  },
+  {
+    path: "/login/venuebook",
+    element:<AuthenticatedRoute element={<VenueBooking />} />,
   },
   {
     path: "/tech",

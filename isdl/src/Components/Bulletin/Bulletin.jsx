@@ -71,10 +71,7 @@ const Bulletin = () => {
           <p style={{maxHeight: "8rem", overflowY: "scroll", overflowWrap:"break-word" }} className="fs-5 mb-4">
     
             <ol>
-              <li>Test</li>
-              <li>Test</li>
-              <li>Test</li>
-              <li>Test</li>
+
               {notices.map((notice, index) => (
                 <li key={index}>{notice.notice}</li>
               ))}
