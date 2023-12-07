@@ -7,13 +7,12 @@
   .containerab label {
     font-weight: 700;
     font-size: 1rem;
-    color: #313131;
+    color: #f8f5f5;
   }
   
   .containerab input {
     border-radius: 5px;
-    border: 1px solid #dddddd;
-    outline: none;
+    background: transparent;
     padding: 10px 15px;
     color: #000;
   }
