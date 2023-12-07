@@ -88,7 +88,7 @@ const Bulletin = () => {
             </button>
             <button
               type="button"
-              className="btn btn-danger btn-md px-4"
+              className="btn btn-warning btn-md px-4"
               onClick={removeNotice}
             >
               Remove Notice

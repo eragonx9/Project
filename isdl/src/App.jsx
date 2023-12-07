@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
 import { useNavigate, Route, Routes, Outlet } from 'react-router-dom';
 import Sport from './Domain/Sport';
 import Tech from './Domain/Tech';
 import Cult from './Domain/Cult';
-import './App.css'
+import './App.css';
 import Feedback from './Depriciated/Feedback/Feedback';
 
-import lt_im1 from '../src/Domain/Assets/lt.jpg'
+
 import '../src/Domain/Cards.css'
 //Frontend Related Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +18,28 @@ import VenueBooking from './Components/VenueBooking/VenueBooking';
 import FeedbackForm from './Components/FeedbackForm/FeedbackForm';
 import Footer from './Components/Footer/Footer';
 
+//Image imports
+import lt_im1 from '../src/Domain/Assets/lt.jpg';
+import i1 from './Domain/Assets/lnmiit/lnmiit1.jpeg';
+import i2 from './Domain/Assets/lnmiit/lnmiit2.jpeg';
+import i3 from './Domain/Assets/lnmiit/lnmiit3.jpeg';
+import i4 from './Domain/Assets/lnmiit/lnmiit4.png';
+
 function App() {
+
+  useEffect(() => {
+    const script = document.createElement('script');
+
+    script.src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
+
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
@@ -29,6 +51,34 @@ function App() {
       
       <div className='Header sticky-top'>
       <Header/>
+      </div>
+
+      <div className='ImgSlideshow'>
+        <div id="carouselExample" className="carousel slide mx-3">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src={i1} className="d-block w-100" alt="..."></img>
+            </div>
+            <div className="carousel-item">
+              <img src={i2} className="d-block w-100" alt="..."></img>
+            </div>
+            <div className="carousel-item">
+              <img src={i3} className="d-block w-100" alt="..."></img>
+            </div>
+            <div className="carousel-item">
+              <img src={i4} className="d-block w-100" alt="..."></img>
+            </div>
+          </div>
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+
       </div>
 
       <div className="TitleContent">
