@@ -169,7 +169,7 @@ const clubData = {
     Mediacell: {
       name: 'Mediacell',
       image:MediacellImage,
-      ClubDetails: ' official media body of lnmiit and alpha ',
+      ClubDetails: ' official media body of lnmiit a ',
       email:'mcell@gmail.com',
       contact: '9231547326'
       
