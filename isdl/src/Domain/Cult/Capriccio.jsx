@@ -4,13 +4,9 @@ import clubData from '../../Components/Club_Template/ClubData';
 const Capriccio = () => {
   const [recruitmentData, setRecruitmentData] = useState([]);
   const [showData, setShowData] = useState(false);
-<<<<<<< Updated upstream
-  const clubName = 'Capriccio'; 
-=======
   const [authKey, setAuthKey] = useState('');
   const correctAuthKey = 'Capriccio'; // Replace with your actual authentication key
   const clubName = 'Capriccio';
->>>>>>> Stashed changes
 
   const fetchData = async () => {
     try {
