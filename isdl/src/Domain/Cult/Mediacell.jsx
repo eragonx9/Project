@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ClubDetailsTemplate from '../../Components/Club_Template/ClubDetailsTemplate';
 import clubData from '../../Components/Club_Template/ClubData';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '../../Components/Footer/Footer';
+import '../club.css'
 const Mediacell = () => {
   const [recruitmentData, setRecruitmentData] = useState([]);
   const [showData, setShowData] = useState(false);
@@ -43,8 +45,13 @@ const Mediacell = () => {
   };
 
   return (
+    <>
     <div style={{ textAlign: 'center', marginTop: '20px' }}>
       <ClubDetailsTemplate clubDetails={clubData[clubName]} />
+
+
+      <div className=" club-ele container my-5">
+
       <button onClick={toggleDataVisibility} style={{ margin: '10px' }}>
         {showData ? 'Hide Recruitment Data' : 'Show Recruitment Data'}
       </button>
@@ -65,7 +72,10 @@ const Mediacell = () => {
           </ul>
         </div>
       )}
+      </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

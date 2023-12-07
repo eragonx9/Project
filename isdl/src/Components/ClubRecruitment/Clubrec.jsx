@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import './ClubRec.css'
 const ClubRecruitment = () => {
   const initialFormData = {
     domain: '',
@@ -79,8 +81,10 @@ const ClubRecruitment = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Club Recruitment Form</h2>
+    <>
+    <Header/>
+    <div className="ClubRec-ele bg-dark rounded-4 py-4 container my-5">
+        <h2 className="mb-4">Club Recruitment Form</h2>
       {submitMessage && <div className="alert alert-success">{submitMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -173,6 +177,10 @@ const ClubRecruitment = () => {
         </button>
       </form>
     </div>
+    <div className='pt-3'>
+      <Footer/>
+      </div>
+    </>
   );
 };
 
