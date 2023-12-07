@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 const Requisition = () => {
   const [formData, setFormData] = useState({
     club: '',
@@ -100,123 +101,127 @@ const Requisition = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Requisition</h2>
+    <>
+      <Header/>
+      <div className="container mt-5">
+        <h2 className="mb-4">Requisition</h2>
 
-      {!isFormSubmitted && (
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="club" className="form-label">
-              Club
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="club"
-              name="club"
-              value={formData.club}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="eventName" className="form-label">
-              Event Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="eventName"
-              name="eventName"
-              value={formData.eventName}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="eventDate" className="form-label">
-              Event Date
-            </label>
-            <input
-              type="date"
-              className="form-control"
-              id="eventDate"
-              name="eventDate"
-              value={formData.eventDate}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="amount" className="form-label">
-              Amount
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              id="amount"
-              name="amount"
-              value={formData.amount}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-      )}
+        {!isFormSubmitted && (
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="club" className="form-label">
+                Club
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="club"
+                name="club"
+                value={formData.club}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="eventName" className="form-label">
+                Event Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="eventName"
+                name="eventName"
+                value={formData.eventName}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="eventDate" className="form-label">
+                Event Date
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                id="eventDate"
+                name="eventDate"
+                value={formData.eventDate}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="amount" className="form-label">
+                Amount
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="amount"
+                name="amount"
+                value={formData.amount}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        )}
 
-      {isFormSubmitted && (
-        <div>
-          <p className="mb-3">Requisition has been submitted. Click the button below to view all submitted forms:</p>
-          <button
-            className="btn btn-success me-3"
-            onClick={() => setIsFormSubmitted(false)}
-          >
-            Form submitted, fill a new form?
-          </button>
-        </div>
-      )}
+        {isFormSubmitted && (
+          <div>
+            <p className="mb-3">Requisition has been submitted. Click the button below to view all submitted forms:</p>
+            <button
+              className="btn btn-success me-3"
+              onClick={() => setIsFormSubmitted(false)}
+            >
+              Form submitted, fill a new form?
+            </button>
+          </div>
+        )}
 
-      {/* Display all requisitions as dynamic buttons */}
-      {allRequisitions.length > 0 && (
-        <div className="mt-5">
-          <h3>All Requisitions</h3>
-          <button
-            className="btn btn-secondary mb-3"
-            onClick={handleToggleRequisitions}
-          >
-            {showAllRequisitions ? 'Hide All Requisitions' : 'Show All Requisitions'}
-          </button>
-          {showAllRequisitions &&
-            allRequisitions.map((req) => (
-              <div key={req._id} className="mb-3">
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => handleRequisitionClick(req)}
-                >
-                  Requisition: {req.club}
-                </button>
-                {selectedRequisition === req && (
-                  <div>
-                    <p>
-                      Club: {req.club}, Event Name: {req.eventName}, Event Date:{' '}
-                      {req.eventDate}, Amount: {req.amount}
-                    </p>
-                    <button
-                      className="btn btn-danger ms-2"
-                      onClick={() => handleDeleteRequisition(req._id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                )}
-              </div>
-            ))}
-        </div>
-      )}
-    </div>
+        {/* Display all requisitions as dynamic buttons */}
+        {allRequisitions.length > 0 && (
+          <div className="mt-5">
+            <h3>All Requisitions</h3>
+            <button
+              className="btn btn-secondary mb-3"
+              onClick={handleToggleRequisitions}
+            >
+              {showAllRequisitions ? 'Hide All Requisitions' : 'Show All Requisitions'}
+            </button>
+            {showAllRequisitions &&
+              allRequisitions.map((req) => (
+                <div key={req._id} className="mb-3">
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleRequisitionClick(req)}
+                  >
+                    Requisition: {req.club}
+                  </button>
+                  {selectedRequisition === req && (
+                    <div>
+                      <p>
+                        Club: {req.club}, Event Name: {req.eventName}, Event Date:{' '}
+                        {req.eventDate}, Amount: {req.amount}
+                      </p>
+                      <button
+                        className="btn btn-danger ms-2"
+                        onClick={() => handleDeleteRequisition(req._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
+      <Footer/>
+    </>
   );
 };
 
