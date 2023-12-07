@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,7 +14,9 @@ const Requisition = () => {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [allRequisitions, setAllRequisitions] = useState([]);
   const [selectedRequisition, setSelectedRequisition] = useState(null);
-  const [showAllRequisitions, setShowAllRequisitions] = useState(true);
+  const [showAllRequisitions, setShowAllRequisitions] = useState(false);
+  const [viewPassword, setViewPassword] = useState('');
+  const [submitPassword, setSubmitPassword] = useState('');
 
   useEffect(() => {
     // Fetch all requisitions when the component mounts
@@ -26,6 +30,12 @@ const Requisition = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check the submit password
+    if (submitPassword !== 'club') {
+      alert('Incorrect submit password. Please try again.');
+      return;
+    }
 
     try {
       // Make a POST request to add the requisition
@@ -73,6 +83,12 @@ const Requisition = () => {
   };
 
   const handleToggleRequisitions = () => {
+    // Check the view password
+    if (viewPassword !== 'finance') {
+      alert('Incorrect view password. Please try again.');
+      return;
+    }
+
     // Toggle visibility of all requisitions
     setShowAllRequisitions((prevShow) => !prevShow);
   };
@@ -83,13 +99,13 @@ const Requisition = () => {
       const response = await fetch(`http://localhost:5000/delete-requisition/${reqId}`, {
         method: 'DELETE',
       });
-  
+
       if (!response.ok) {
         // Handle the case where the deletion was not successful
         const errorData = await response.json();
         throw new Error(errorData.error);
       }
-  
+
       // Update the requisitions state after successful deletion
       fetchAllRequisitions();
       alert('Requisition deleted successfully!');
@@ -102,7 +118,7 @@ const Requisition = () => {
   return (
     <div className="container mt-5">
       <h2 className="mb-4">Requisition</h2>
-
+  
       {!isFormSubmitted && (
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -161,12 +177,25 @@ const Requisition = () => {
               required
             />
           </div>
+          <div className="mb-3">
+            <label htmlFor="submitPassword" className="form-label">
+              Enter Password to Submit Form
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="submitPassword"
+              value={submitPassword}
+              onChange={(e) => setSubmitPassword(e.target.value)}
+              required
+            />
+          </div>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </form>
       )}
-
+  
       {isFormSubmitted && (
         <div>
           <p className="mb-3">Requisition has been submitted. Click the button below to view all submitted forms:</p>
@@ -178,11 +207,24 @@ const Requisition = () => {
           </button>
         </div>
       )}
-
+  
       {/* Display all requisitions as dynamic buttons */}
       {allRequisitions.length > 0 && (
         <div className="mt-5">
           <h3>All Requisitions</h3>
+          <div className="mb-3">
+            <label htmlFor="viewPassword" className="form-label">
+              Enter Password to View Requisitions
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="viewPassword"
+              value={viewPassword}
+              onChange={(e) => setViewPassword(e.target.value)}
+              required
+            />
+          </div>
           <button
             className="btn btn-secondary mb-3"
             onClick={handleToggleRequisitions}
@@ -217,7 +259,6 @@ const Requisition = () => {
         </div>
       )}
     </div>
-  );
-};
-
+  );  
+}
 export default Requisition;
