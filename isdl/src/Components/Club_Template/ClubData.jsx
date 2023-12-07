@@ -36,7 +36,7 @@ const clubData = {
       image:CapriccioImage,
       ClubDetails: ' A community of music lovers who talk, jam, produce, recordand collaborate over musical ideas.',
       email:'capriccio@gmail.com',
-      contact: '9785301426'
+      contact: 'Name: 9785301426 \n Name2: 273982794 \n Name3: 3981273981'
       
     },
 
@@ -153,7 +153,7 @@ const clubData = {
       image:DebsocImage,
       ClubDetails: ' Aimed at broadening the mindset of its members as well as developing abilities such as speaking, debating and negotiating through participation in various MUNs around the globe.',
       email:'debsoc@gmail.com',
-      contact: 'Debsoc@example.com'
+      contact: '8970251976'
       
     },
 
