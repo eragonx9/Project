@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import './ClubRec.css'
 
 const ClubRecruitment = () => {
   const initialFormData = {
@@ -79,48 +82,107 @@ const ClubRecruitment = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Club Recruitment Form</h2>
-      {submitMessage && <div className="alert alert-success">{submitMessage}</div>}
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="domain" className="form-label">
-            Select Domain:
-          </label>
-          <select
-            id="domain"
-            name="domain"
-            value={formData.domain}
-            onChange={handleInputChange}
-            className="form-select"
-          >
-            <option value="">Select Domain</option>
-            <option value="tech">Tech</option>
-            <option value="cult">Cult</option>
-            <option value="sport">Sport</option>
-          </select>
-        </div>
-
-        {formData.domain && (
+    <>
+      <Header/>
+      <div className="ClubRec-ele bg-dark rounded-4 py-4 container my-5">
+        <h2 className="mb-4">Club Recruitment Form</h2>
+        {submitMessage && <div className="alert alert-success">{submitMessage}</div>}
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="club" className="form-label">
-              Select Club:
+            <label htmlFor="domain" className="form-label">
+              Select Domain:
             </label>
             <select
-              id="club"
-              name="club"
-              value={formData.club}
+              id="domain"
+              name="domain"
+              value={formData.domain}
               onChange={handleInputChange}
               className="form-select"
             >
-              <option value="">Select Club</option>
-              {clubOptions[formData.domain].map((clubName) => (
-                <option key={clubName} value={clubName}>
-                  {clubName}
-                </option>
-              ))}
+              <option value="">Select Domain</option>
+              <option value="tech">Tech</option>
+              <option value="cult">Cult</option>
+              <option value="sport">Sport</option>
             </select>
           </div>
+
+
+          {formData.domain && (
+            <div className="mb-3">
+              <label htmlFor="club" className="form-label">
+                Select Club:
+              </label>
+              <select
+                id="club"
+                name="club"
+                value={formData.club}
+                onChange={handleInputChange}
+                className="form-select"
+              >
+                <option value="">Select Club</option>
+                {clubOptions[formData.domain].map((clubName) => (
+                  <option key={clubName} value={clubName}>
+                    {clubName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label">
+              Name:
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className="form-control"
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="rollNumber" className="form-label">
+              Roll Number:
+            </label>
+            <input
+              type="text"
+              id="rollNumber"
+              name="rollNumber"
+              value={formData.rollNumber}
+              onChange={handleInputChange}
+              className="form-control"
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="contact" className="form-label">
+              Contact:
+            </label>
+            <input
+              type="text"
+              id="contact"
+              name="contact"
+              value={formData.contact}
+              onChange={handleInputChange}
+              className={`form-control ${phoneNumberError ? 'is-invalid' : ''}`}
+            />
+            {phoneNumberError && <div className="invalid-feedback">{phoneNumberError}</div>}
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <div className='pt-3'>
+      <Footer/>
+      </div>
+    </>
+
         )}
 
         <div className="mb-3">
@@ -173,6 +235,7 @@ const ClubRecruitment = () => {
         </button>
       </form>
     </div>
+
   );
 };
 

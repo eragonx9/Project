@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import './Requisition.css'
+
 const Requisition = () => {
   const [formData, setFormData] = useState({
     club: '',
@@ -104,7 +106,9 @@ const Requisition = () => {
     <>
       <Header/>
       <div className="container mt-5">
-        <h2 className="mb-4">Requisition</h2>
+
+        <div className="container bg-dark rounded-4 py-4">
+        <h2 className="mb-4">Requisition Form</h2>
 
         {!isFormSubmitted && (
           <form onSubmit={handleSubmit}>
@@ -168,7 +172,9 @@ const Requisition = () => {
               Submit
             </button>
           </form>
+
         )}
+        </div>
 
         {isFormSubmitted && (
           <div>
@@ -181,44 +187,45 @@ const Requisition = () => {
             </button>
           </div>
         )}
-
-        {/* Display all requisitions as dynamic buttons */}
-        {allRequisitions.length > 0 && (
-          <div className="mt-5">
-            <h3>All Requisitions</h3>
-            <button
-              className="btn btn-secondary mb-3"
-              onClick={handleToggleRequisitions}
-            >
-              {showAllRequisitions ? 'Hide All Requisitions' : 'Show All Requisitions'}
-            </button>
-            {showAllRequisitions &&
-              allRequisitions.map((req) => (
-                <div key={req._id} className="mb-3">
-                  <button
-                    className="btn btn-secondary"
-                    onClick={() => handleRequisitionClick(req)}
-                  >
-                    Requisition: {req.club}
-                  </button>
-                  {selectedRequisition === req && (
-                    <div>
-                      <p>
-                        Club: {req.club}, Event Name: {req.eventName}, Event Date:{' '}
-                        {req.eventDate}, Amount: {req.amount}
-                      </p>
-                      <button
-                        className="btn btn-danger ms-2"
-                        onClick={() => handleDeleteRequisition(req._id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ))}
-          </div>
-        )}
+        <div className="bg-dark rounded-4 my-3 p-2">
+          {/* Display all requisitions as dynamic buttons */}
+          {allRequisitions.length > 0 && (
+            <div>
+              <h3>All Requisitions</h3>
+              <button
+                className="btn btn-secondary mb-3"
+                onClick={handleToggleRequisitions}
+              >
+                {showAllRequisitions ? 'Hide All Requisitions' : 'Show All Requisitions'}
+              </button>
+              {showAllRequisitions &&
+                allRequisitions.map((req) => (
+                  <div key={req._id} className="mb-3">
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => handleRequisitionClick(req)}
+                    >
+                      Requisition: {req.club}
+                    </button>
+                    {selectedRequisition === req && (
+                      <div>
+                        <p>
+                          Club: {req.club}, Event Name: {req.eventName}, Event Date:{' '}
+                          {req.eventDate}, Amount: {req.amount}
+                        </p>
+                        <button
+                          className="btn btn-danger ms-2"
+                          onClick={() => handleDeleteRequisition(req._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+            </div>
+          )}
+        </div>
       </div>
       <Footer/>
     </>
