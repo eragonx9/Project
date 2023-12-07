@@ -112,7 +112,7 @@ const FeedbackForm = () => {
             <ul>
               {lastThreeFeedbacks.map((item, index) => (
                 <li key={index}>
-                  <strong>{item.name}:</strong> {item.feedback}
+                  <strong>{item.feedback}</strong> 
                 </li>
               ))}
             </ul>

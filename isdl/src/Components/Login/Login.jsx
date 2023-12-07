@@ -28,7 +28,6 @@ function Login() {
     signInWithEmailAndPassword(auth, values.email, values.password)
       .then(() => {
         setSubmitButtonDisabled(false);
-        // Redirect to the App page after successful login
         navigate("/login/");
       })
       .catch((err) => {
