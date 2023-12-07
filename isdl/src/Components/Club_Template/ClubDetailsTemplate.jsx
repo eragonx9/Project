@@ -29,9 +29,10 @@ const ClubDetailsTemplate = ({ clubDetails }) => {
         <img src={image} className="d-block mx-lg-auto img-fluid" style={{width: '300rem', aspectRatio: 1 / 1, objectFit:'cover', objectPosition: 'center'}} loading="lazy"></img>
       </div>
     </div>
+    <Footer/>
   </div>
       
-      <Footer/>
+     
     </>
   );
 };
