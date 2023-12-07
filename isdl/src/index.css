@@ -29,6 +29,8 @@ a:hover {
 }
 
 body {
+  background-image: url('./Domain/Assets/lnmiit/lnmiit2_gs.jpeg');
+  background-size: cover;
   width:100vw;
   padding: 0;
   margin: 0;

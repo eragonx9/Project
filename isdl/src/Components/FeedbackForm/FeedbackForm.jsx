@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './FeedbackForm.css'
 
 const FeedbackForm = () => {
   const [name, setName] = useState('');
@@ -56,10 +57,10 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="container py-5">
+    <div className="container py-3">
       <div className="row justify-content-center">
-        <div className="col-md-8">
-          <div className="card">
+        <div className="col-md-8 Feedback-ele rounded-4">
+          <div className="my-2 card">
             <div className="card-body">
               <h2 className="card-title">Feedback Form</h2>
               {submitted ? (
@@ -99,7 +100,7 @@ const FeedbackForm = () => {
           </div>
         </div>
       </div>
-      <div className="row  mt-5 justify-content-center align-items-start">
+      <div className="Feedback-ele rounded-4 row mt-5 justify-content-center align-items-start">
         <div className="col-md-7 ">
           <h1 className="display-5 fw-bold lh-1 mb-3">Give Us Feedback!</h1>
           <p className="lead">
@@ -107,7 +108,7 @@ const FeedbackForm = () => {
           </p>
         </div>
         <div className="col-md-5 ">
-          <h3>Last Three Feedbacks</h3>
+          <h3>See Our Last Three Feedbacks</h3>
           {showLastThreeFeedbacks && (
             <ul>
               {lastThreeFeedbacks.map((item, index) => (
