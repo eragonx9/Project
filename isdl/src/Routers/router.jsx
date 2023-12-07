@@ -1,7 +1,9 @@
 import {
   createBrowserRouter,
-  RouterProvider,
+  RouterProvider,Route, Routes
 } from "react-router-dom";
+import React,{useState,useEffect} from 'react';
+
 import Signup from "../Components/Signup/Signup";
 import App from "../App";
 import Tech from "../Domain/Tech";
@@ -28,7 +30,25 @@ import Badminton from "../Domain/Sport/Badminton";
 import Login from "../Components/Login/Login";
 import Clubrec from "../Components/ClubRecruitment/Clubrec";
 import Requisition from "../Components/Requisition/Requisition";
-import VenueBooking from "../Components/VenueBooking/VenueBooking";
+import { auth } from "../firebase"; // Import your authentication object
+
+// Helper function to check if the user is authenticated
+const isAuthenticated = () => {
+  const user = auth.currentUser;
+  return !!user;
+};
+
+// Custom Route component to check authentication before rendering a route
+const AuthenticatedRoute = ({ element }) => {
+  if (!isAuthenticated()) {
+    // Redirect unauthenticated users to the login page
+    window.location.replace("/");
+    return null;
+  }
+
+  return <React.Fragment>{element}</React.Fragment>;;
+};
+
 
 const router = createBrowserRouter([
   {
@@ -36,97 +56,97 @@ const router = createBrowserRouter([
     element: <Login/>
   },
   {
-    path: "/login/",
-    element: <App/>
+    path: "/login/*",
+    element:<AuthenticatedRoute element={<App />} />,
   },
   {
     path: "/tech",
-    element: <Tech />,
+    element: <AuthenticatedRoute element={<Tech />} />,
   },
       {
         path: "/tech/quizzinga",
-        element: <Quizzinga />,
+        element: <AuthenticatedRoute element={<Quizzinga/>} />,
       },
       {
         path: "/tech/debsoc",
-        element: <Debsoc />,
+        element: <AuthenticatedRoute element={<Debsoc/>} />,
       },
       {
         path: "/tech/Cipher",
-        element: <Cipher />,
+        element: <AuthenticatedRoute element={<Cipher/>} />,
       },
       {
         path: "/tech/Cybros",
-        element: <Cybros />,
+        element: <AuthenticatedRoute element={<Cybros/>} />,
       },
       {
         path: "/tech/phoenix",
-        element: <Phoenix />,
+        element: <AuthenticatedRoute element={<Phoenix/>} />,
       },
       {
         path: "/tech/astronomy",
-        element: <Astronomy />,
+        element: <AuthenticatedRoute element={<Astronomy/>} />,
       },
     
 
 
   {
     path: "/cult",
-    element: <Cult />,
+    element: <AuthenticatedRoute element={<Cult/>} />,
   },
     {
       path:"/cult/lc",
-      element:<LC/>
+      element:<AuthenticatedRoute element={<LC/>} />,
     },
     {
       path: "/cult/capriccio",
-      element: <Capriccio />
+      element: <AuthenticatedRoute element={<Capriccio/>} />,
     },
     {
       path: "/cult/insignia",
-      element: <Insignia />
+      element: <AuthenticatedRoute element={<Insignia/>} />,
     },
     {
       path: "/cult/imagination",
-      element: <Imagination />
+      element: <AuthenticatedRoute element={<Imagination/>} />,
     },
     {
       path: "/cult/rendition",
-      element: <Rendition />
+      element: <AuthenticatedRoute element={<Rendition/>} />,
     },
     {
       path: "/cult/mediacell",
-      element: <Mediacell />
+      element: <AuthenticatedRoute element={<Mediacell/>} />,
     },
     {
       path: "/cult/aaveg",
-      element: <Aaveg />
+      element: <AuthenticatedRoute element={<Aaveg/>} />,
     },
     {
       path: "/cult/eminence",
-      element: <Eminence />
+      element:<AuthenticatedRoute element={<Eminence/>} />,
     },
   
     
   {
     path: "/sport",
-    element: <Sport />,
+    element: <AuthenticatedRoute element={<Sport/>} />,
   },
       {
         path: "/sport/badminton",
-        element: <Badminton />,
+        element: <AuthenticatedRoute element={<Badminton/>} />,
       },
       {
         path: "/sport/cricket",
-        element: <Cricket/>,
+        element: <AuthenticatedRoute element={<Cricket/>} />,
       },
       {
         path: "/sport/football",
-        element: <Football />,
+        element: <AuthenticatedRoute element={<Football/>} />,
       },
       {
         path: "/sport/kabaddi",
-        element: <Kabaddi />,
+        element: <AuthenticatedRoute element={<Kabaddi/>} />,
       },
       
       {
@@ -135,15 +155,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/recruitment',
-        element: <Clubrec />,
+        element: <AuthenticatedRoute element={<Clubrec/>} />,
       },
       {
         path: '/requisition',
-        element: <Requisition/>
-      },
-      {
-        path: '/venuebook',
-        element: <VenueBooking/>
+        element: <AuthenticatedRoute element={<Requisition/>} />,
       }
 
 ]);
