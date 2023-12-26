@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import backgroundImage from './lnmiit2_gs.jpeg'; // Replace with the actual path to your image
 
 const VenueBooking = () => {
   const [bookings, setBookings] = useState([]);
@@ -154,63 +155,72 @@ const VenueBooking = () => {
     }
   };
 
+  const backgroundStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
   return (
-    <div className="bg-secondary text-secondary px-4 py-3">
+    <div bg-dark >
+    <div style={backgroundStyle} className="text-white px-4 py-3">
       <div className="py-0">
-        <div className='Heading text-center'>
-          <h1 className="display-5 fw-bold text-white">Book A Venue</h1>
+        <div className="Heading text-center">
+          <h1 className="display-5 text-black fw-bold">Book A Venue</h1>
         </div>
         <div className="col-lg-6 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
           <form className="fs-5 mt-3 mb-2 text-center" onSubmit={handleBookingSubmit}>
-            <label className="pb-2">
-              Enter Booking venue (1-12):
+            <div className="mb-3">
+              <label className="form-label">Enter Booking venue (1-12):</label>
               <input
                 type="number"
+                className="form-control"
                 value={newBooking}
                 onChange={handleNewBookingChange}
                 min="1"
                 max="12"
               />
-            </label>
-            <button type="submit" className="btn btn-primary btn-md mx-4 px-4 fw-bold">
+            </div>
+            <button type="submit" className="btn btn-primary btn-md px-4 fw-bold">
               Book
             </button>
           </form>
         </div>
         <div className="col-lg-6 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
-          <h2>Booking Actions</h2>
+          <h2 className="mb-3">Booking Actions</h2>
           <button
-            className="btn btn-secondary btn-md mx-4 px-4 fw-bold"
+            className="btn btn-secondary btn-md mb-3 px-4 fw-bold"
             onClick={handleShowList}
           >
             {showList ? 'Hide Booking Actions' : 'Show Booking Actions'}
           </button>
           {showList && (
-            <ul>
+            <ul className="list-group">
               {bookings.map((booking) => (
-                <li key={booking._id}>
-                  {`lt-${booking.venueNumber}`}
+                <li key={booking._id} className="list-group-item">
+                  <span className="fw-bold">lt-{booking.venueNumber}</span>
                   {booking.status === 'accepted' ? (
-                    <span className="text-success"> - Accepted</span>
+                    <span className="text-success float-end">Accepted</span>
                   ) : booking.status === 'rejected' ? (
-                    <span className="text-danger"> - Rejected</span>
+                    <span className="text-danger float-end">Rejected</span>
                   ) : (
-                    <>
+                    <div className="btn-group float-end" role="group">
                       <button
                         type="button"
-                        className="btn btn-success btn-sm mx-2 my-2 px-4"
+                        className="btn btn-success btn-sm"
                         onClick={() => handleAcceptBooking(booking._id)}
                       >
                         Accept
                       </button>
                       <button
                         type="button"
-                        className="btn btn-danger btn-sm mx-2 my-2 px-4"
+                        className="btn btn-danger btn-sm"
                         onClick={() => handleRejectBooking(booking._id)}
                       >
                         Reject
                       </button>
-                    </>
+                    </div>
                   )}
                 </li>
               ))}
@@ -218,24 +228,26 @@ const VenueBooking = () => {
           )}
         </div>
         <div className="col-lg-6 py-2 px-2 rounded-4 bg-dark mx-auto border-light">
-          <h2>Booked LTs</h2>
+          <h2 className="mb-3">Booked LTs</h2>
           {/* Display details of each booked LT */}
-          <ul style={{ maxHeight: "5rem", overflowY: "scroll" }}>
+          <ul className="list-group" style={{ maxHeight: "5rem", overflowY: "scroll" }}>
             {bookings.map((booking) => (
-              <li key={booking._id}>
-                {`lt-${booking.venueNumber !== undefined ? booking.venueNumber : 'Loading...'} - `}
+              <li key={booking._id} className="list-group-item">
+                <span className="fw-bold">lt-{booking.venueNumber}</span>
                 {booking.status === 'accepted' ? (
-                  <span className="text-success">Accepted</span>
+                  <span className="text-success float-end">Accepted</span>
                 ) : booking.status === 'rejected' ? (
-                  <span className="text-danger">Rejected</span>
+                  <span className="text-danger float-end">Rejected</span>
                 ) : (
-                  <span className="text-info">Pending</span>
+                  <span className="text-info float-end">Pending</span>
                 )}
               </li>
             ))}
           </ul>
         </div>
       </div>
+    </div>
+
     </div>
   );
 };
