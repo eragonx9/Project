@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ClubDetailsTemplate from '../../Components/Club_Template/ClubDetailsTemplate';
 import clubData from '../../Components/Club_Template/ClubData';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '../../Components/Footer/Footer';
+import '../club.css'
 const Eminence = () => {
   const [recruitmentData, setRecruitmentData] = useState([]);
   const [showData, setShowData] = useState(false);
-  const clubName = 'Eminence'; 
+  const [authKey, setAuthKey] = useState('');
+  const correctAuthKey = 'Eminence'; 
+  const clubName = 'Eminence';
 
   const fetchData = async () => {
     try {
@@ -22,22 +27,38 @@ const Eminence = () => {
   };
 
   useEffect(() => {
-    if (showData) {
+    if (showData && authKey === correctAuthKey) {
       fetchData();
     }
-  }, [showData]);
+  }, [showData, authKey, correctAuthKey]);
 
   const toggleDataVisibility = () => {
+    if (showData) {
+      setRecruitmentData([]); // Clear the data when hiding
+    } else {
+      const enteredKey = prompt('Enter the authentication key:');
+      if (enteredKey !== null) {
+        setAuthKey(enteredKey);
+      }
+    }
     setShowData(!showData);
   };
 
   return (
-    <div>
+    <>
+    <div style={{ textAlign: 'center', marginTop: '20px' }}>
       <ClubDetailsTemplate clubDetails={clubData[clubName]} />
-      <button onClick={toggleDataVisibility}>
+
+
+      <div className=" club-ele container my-5">
+
+      <button onClick={toggleDataVisibility} style={{ margin: '10px' }}>
         {showData ? 'Hide Recruitment Data' : 'Show Recruitment Data'}
       </button>
-      {showData && recruitmentData.length > 0 && (
+      {showData && authKey !== correctAuthKey && (
+        <p style={{ color: 'red' }}>Authentication failed. Please try again.</p>
+      )}
+      {showData && authKey === correctAuthKey && recruitmentData.length > 0 && (
         <div>
           <h3>Recruitment Data:</h3>
           <ul>
@@ -51,7 +72,10 @@ const Eminence = () => {
           </ul>
         </div>
       )}
+      </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 
